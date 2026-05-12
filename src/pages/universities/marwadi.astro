@@ -28,29 +28,13 @@ import Footer from '../../components/Footer.astro';
   <section class="section uni-content">
     <div class="container">
       
-      <!-- Recognitions Bar (Fixed broken images) -->
+      <!-- Recognitions Bar -->
       <div class="recognitions-bar">
-        <div class="rec-item">
-          <div class="rec-badge naac-badge">NAAC</div>
-          <div>
-            <span class="rec-title">Accredited</span>
-            <strong class="rec-grade">A+ Grade</strong>
-          </div>
-        </div>
-        <div class="rec-item">
-          <div class="rec-badge nirf-badge">NIRF</div>
-          <div>
-            <span class="rec-title">Ranking 2025</span>
-            <strong class="rec-grade">Top 150 Band</strong>
-          </div>
-        </div>
-        <div class="rec-item">
-           <div class="rec-badge nba-badge">NBA</div>
-           <div>
-            <span class="rec-title">Tier-1</span>
-            <strong class="rec-grade">Accreditation</strong>
-          </div>
-        </div>
+        <img src="/accred/naac.png" alt="NAAC A+ Grade" class="accred-img" />
+        <img src="/accred/nirf.png" alt="NIRF 150 Ranking" class="accred-img" />
+        <img src="/accred/nba.png" alt="NBA Accreditation" class="accred-img" />
+        <img src="/accred/no1_g.png" alt="No.1 in Gujarat" class="accred-img" />
+        <img src="/accred/ranking_w.png" alt="Top Ranking" class="accred-img" />
       </div>
 
       <div class="uni-grid">
@@ -67,16 +51,16 @@ import Footer from '../../components/Footer.astro';
             </p>
           </div>
           
-          <!-- Top Recruiters Grid instead of Marquee for better mobile/desktop rendering -->
+          <!-- Top Recruiters Grid -->
           <div class="content-block">
             <h2>Top Recruiters</h2>
             <div class="recruiters-grid">
-              <div class="recruiter-logo">Amazon</div>
-              <div class="recruiter-logo">TCS</div>
-              <div class="recruiter-logo">Infosys</div>
-              <div class="recruiter-logo">Capgemini</div>
-              <div class="recruiter-logo">IBM</div>
-              <div class="recruiter-logo">Wipro</div>
+              <div class="recruiter-card"><img src="/companylogos/amazon.png" alt="Amazon" /></div>
+              <div class="recruiter-card"><img src="/companylogos/tcs.png" alt="TCS" /></div>
+              <div class="recruiter-card"><img src="/companylogos/congz.png" alt="Cognizant" /></div>
+              <div class="recruiter-card"><img src="/companylogos/adani.png" alt="Adani" /></div>
+              <div class="recruiter-card"><img src="/companylogos/google.png" alt="Google" /></div>
+              <div class="recruiter-card"><img src="/companylogos/wipro.png" alt="Wipro" /></div>
             </div>
           </div>
 
@@ -226,54 +210,28 @@ import Footer from '../../components/Footer.astro';
   }
   .content-block { margin-bottom: 48px; }
   
-  /* Recognitions Bar */
+  /* Recognitions Bar using real images */
   .recognitions-bar {
     display: flex;
-    gap: 16px;
+    gap: 20px;
     flex-wrap: wrap;
     background: var(--off-white);
     padding: 24px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
     margin-bottom: 40px;
-  }
-  .rec-item {
-    display: flex;
+    justify-content: space-around;
     align-items: center;
-    gap: 16px;
-    flex: 1;
-    min-width: 200px;
   }
-  .rec-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    font-weight: 800;
-    font-size: 0.9rem;
-    text-align: center;
-    line-height: 1.1;
-    flex-shrink: 0;
+  .accred-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+    transition: transform 0.2s;
   }
-  .naac-badge { background: #fef08a; color: #854d0e; border: 2px solid #fde047; }
-  .nirf-badge { background: #e0e7ff; color: #3730a3; border: 2px solid #c7d2fe; }
-  .nba-badge { background: #dcfce7; color: #166534; border: 2px solid #bbf7d0; }
-
-  .rec-title {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 2px;
-  }
-  .rec-grade {
-    display: block;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--navy);
+  .accred-img:hover {
+    transform: scale(1.05);
   }
 
   .uni-main h2 {
@@ -289,25 +247,34 @@ import Footer from '../../components/Footer.astro';
     margin-bottom: 16px;
   }
 
-  /* Recruiters Grid */
+  /* Recruiters Grid using real images */
   .recruiters-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 16px;
   }
-  .recruiter-logo {
+  .recruiter-card {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 16px;
-    text-align: center;
-    font-weight: 700;
-    color: var(--navy-mid);
-    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 64px;
+    height: 80px;
+  }
+  .recruiter-card img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  .recruiter-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
   }
 
   /* Courses Grid */
@@ -462,8 +429,8 @@ import Footer from '../../components/Footer.astro';
     .uni-title { font-size: 2rem; }
     .uni-location { justify-content: center; }
     .courses-grid { grid-template-columns: 1fr; }
-    .recognitions-bar { flex-direction: column; gap: 16px; padding: 16px; }
-    .rec-item { width: 100%; }
+    .recognitions-bar { padding: 16px; }
+    .accred-img { height: 48px; }
     .recruiters-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
