@@ -55,7 +55,10 @@ const links = [
     {links.map(l => (
       l.dropdown ? (
         <div class="mobile-dropdown-group">
-          <p class="nav-mobile-link mobile-dropdown-title">{l.label}</p>
+          <button class="nav-mobile-link mobile-dropdown-title">
+            {l.label}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition: transform 0.2s;"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
           <div class="mobile-dropdown-items">
             {l.dropdown.map(d => (
               <a href={d.href} class="nav-mobile-link mobile-dropdown-item">— {d.label}</a>
@@ -66,7 +69,7 @@ const links = [
         <a href={l.href} class="nav-mobile-link">{l.label}</a>
       )
     ))}
-    <a href="/#contact" class="btn btn-primary" style="margin-top:8px;width:100%;justify-content:center;">Enquire Now</a>
+    <a href="/#contact" class="btn btn-primary" style="margin-top:16px;width:100%;justify-content:center;">Enquire Now</a>
   </div>
 </header>
 
@@ -187,6 +190,8 @@ const links = [
   padding: 16px 24px 24px;
   border-top: 1px solid var(--border);
   background: var(--white);
+  max-height: calc(100vh - 76px);
+  overflow-y: auto;
 }
 .nav-mobile-link {
   display: block;
@@ -201,11 +206,25 @@ const links = [
   border-bottom: 1px solid var(--border);
 }
 .mobile-dropdown-title {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: var(--navy);
   font-weight: 700;
   border-bottom: none;
-  padding-bottom: 4px;
-  margin-bottom: 0;
+  cursor: pointer;
+}
+.mobile-dropdown-items {
+  display: none;
+  flex-direction: column;
+  padding-bottom: 8px;
+}
+.mobile-dropdown-items.open {
+  display: flex;
 }
 .mobile-dropdown-item {
   padding: 8px 0 8px 16px;
@@ -232,9 +251,29 @@ burger.addEventListener('click', () => {
   burger.setAttribute('aria-expanded', String(open));
 });
 
+// Mobile Dropdown Accordion
+const mobileDropdownTitles = document.querySelectorAll('.mobile-dropdown-title');
+mobileDropdownTitles.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const items = btn.nextElementSibling;
+    if(items) {
+      items.classList.toggle('open');
+      const svg = btn.querySelector('svg');
+      if(svg) {
+        svg.style.transform = items.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+      }
+    }
+  });
+});
+
 // Close mobile on link click
 mobile.querySelectorAll('a').forEach(a => {
-  if (!a.classList.contains('nav-dropdown-toggle')) {
+  if (!a.classList.contains('nav-dropdown-toggle') && !a.classList.contains('mobile-dropdown-item')) {
+    a.addEventListener('click', () => {
+      mobile.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  } else if (a.classList.contains('mobile-dropdown-item')) {
     a.addEventListener('click', () => {
       mobile.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
