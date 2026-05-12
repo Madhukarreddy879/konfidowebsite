@@ -1,0 +1,233 @@
+---
+const phone = '+91 95026 44931';
+const email = 'info@konfido.co.in';
+const address = 'RTO, House No 6-3569/1-2-1/C, Khairathabad (Rockdale Hills), Opposite Khairathabad, Hyderabad, Telangana – 500082';
+---
+
+<section class="contact-section" id="contact">
+  <div class="container contact-grid">
+
+    <!-- Info column -->
+    <div class="contact-info fade-up">
+      <span class="section-tag section-tag-light">Get In Touch</span>
+      <h2 class="contact-title">Let's Get You Started</h2>
+      <p class="contact-sub">
+        Reach out for a free counselling session — we'll help you find
+        the right course and university.
+      </p>
+
+      <ul class="contact-details">
+        <li class="contact-detail-item">
+          <div class="cd-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cd-label">Phone</p>
+            <a href={`tel:${phone.replace(/\s/g,'')}`} class="cd-value">{phone}</a>
+          </div>
+        </li>
+        <li class="contact-detail-item">
+          <div class="cd-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cd-label">Email</p>
+            <a href={`mailto:${email}`} class="cd-value">{email}</a>
+          </div>
+        </li>
+        <li class="contact-detail-item">
+          <div class="cd-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cd-label">Office</p>
+            <p class="cd-value cd-address">{address}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Form column -->
+    <div class="contact-form-wrap fade-up fade-up-d2">
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="course">Stream of Interest</label>
+            <select id="course" name="course">
+              <option value="">Select a stream</option>
+              <option>Engineering (B.Tech)</option>
+              <option>Management (MBA/BBA)</option>
+              <option>Medical / Para-Medical</option>
+              <option>Law</option>
+              <option>Arts & Science</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Send Enquiry &nbsp;→
+        </button>
+        <p class="form-note">We respond within 24 hours · Your information is confidential.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.contact-section {
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+  padding-block: 72px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(200,16,46,.15) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Info ── */
+.section-tag-light { color: rgba(255,255,255,.7); }
+.section-tag-light::before { background: rgba(255,255,255,.4); }
+
+.contact-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.contact-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,.58);
+  line-height: 1.75;
+  max-width: 380px;
+}
+
+.contact-details {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.cd-icon {
+  width: 34px; height: 34px;
+  background: rgba(255,255,255,.1);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.cd-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+  margin-bottom: 2px;
+}
+.cd-value {
+  font-size: 0.88rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+a.cd-value:hover { opacity: 0.75; }
+.cd-address {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.72);
+}
+
+/* ── Form ── */
+.contact-form-wrap {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-lg);
+}
+.contact-form { display: flex; flex-direction: column; gap: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  background: var(--off-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--navy-mid);
+  box-shadow: 0 0 0 3px rgba(26,58,107,.1);
+  background: var(--white);
+}
+
+.form-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: -2px;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .contact-form-wrap { padding: 24px 18px; }
+}
+</style>

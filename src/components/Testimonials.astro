@@ -1,0 +1,121 @@
+---
+const testimonials = [
+  {
+    quote: 'Placeholder — Add a testimonial from a student who secured admission through Konfido.',
+    name: 'Student Name',
+    detail: 'B.Tech — Marwadi University, 2024',
+    initials: 'SN',
+  },
+  {
+    quote: 'Placeholder — Add a testimonial from a student about the counselling and guidance experience.',
+    name: 'Student Name',
+    detail: 'MBA — NIMS University, 2023',
+    initials: 'SN',
+  },
+  {
+    quote: 'Placeholder — Add a testimonial highlighting Konfido\'s exam preparation or scholarship support.',
+    name: 'Student Name',
+    detail: 'BBA — Suresh Gyan Vihar, 2024',
+    initials: 'SN',
+  },
+];
+---
+
+<section class="section section-alt" id="testimonials">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-tag">Student Stories</span>
+      <h2 class="section-title">What Our Students Say</h2>
+    </div>
+
+    <div class="testi-grid">
+      {testimonials.map((t, i) => (
+        <div class={`testi-card fade-up fade-up-d${i + 1}`}>
+          <div class="testi-quote-mark">"</div>
+          <p class="testi-quote">{t.quote}</p>
+          <div class="testi-author">
+            <div class="testi-avatar">{t.initials}</div>
+            <div>
+              <p class="testi-name">{t.name}</p>
+              <p class="testi-detail">{t.detail}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.section-header { margin-bottom: 52px; }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.testi-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 36px 32px 28px;
+  position: relative;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.testi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.testi-quote-mark {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  line-height: 0.6;
+  color: var(--crimson);
+  opacity: 0.18;
+  position: absolute;
+  top: 24px; left: 28px;
+  user-select: none;
+}
+
+.testi-quote {
+  font-size: 0.92rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.testi-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.testi-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.testi-detail {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+</style>

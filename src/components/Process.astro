@@ -1,0 +1,106 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Free Counselling Session',
+    desc: 'Placeholder — Describe the initial free consultation where students discuss their goals, academic background, and preferences.',
+  },
+  {
+    num: '02',
+    title: 'Course & University Selection',
+    desc: 'Placeholder — Explain how Konfido experts match students to the best-fit universities and programmes.',
+  },
+  {
+    num: '03',
+    title: 'Application & Enrollment',
+    desc: 'Placeholder — Outline the end-to-end support through application forms, document submission, and final enrollment.',
+  },
+];
+---
+
+<section class="section" id="process">
+  <div class="container">
+    <div class="process-layout">
+      <div class="process-left fade-up">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Your Path to the Right University</h2>
+        <p class="section-sub">
+          A simple, transparent process designed to make your admission journey
+          stress-free and successful.
+        </p>
+        <a href="#contact" class="btn btn-primary" style="margin-top: 32px;">
+          Get Started Free
+        </a>
+      </div>
+
+      <div class="process-steps">
+        {steps.map((step, i) => (
+          <div class={`process-step fade-up fade-up-d${i + 1}`}>
+            <div class="step-num">{step.num}</div>
+            <div class="step-body">
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-desc">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.process-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.process-step {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.process-step:last-child { border-bottom: none; }
+.process-step:first-child { padding-top: 0; }
+
+.step-num {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: rgba(13,43,85,.1);
+  line-height: 1;
+  min-width: 52px;
+  transition: color var(--transition);
+}
+.process-step:hover .step-num { color: var(--crimson); }
+
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.step-desc {
+  font-size: 0.87rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+
+@media (max-width: 860px) {
+  .process-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+</style>

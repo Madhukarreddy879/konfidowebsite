@@ -1,0 +1,369 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import StatsBar from '../components/StatsBar.astro';
+import Services from '../components/Services.astro';
+import Universities from '../components/Universities.astro';
+import Process from '../components/Process.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+
+  <!-- ═══ HERO ═══════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <!-- Geometric background pattern -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-circle hero-circle-1"></div>
+      <div class="hero-circle hero-circle-2"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <span class="hero-badge fade-up">
+          <span class="badge-dot"></span>
+          Est. Since 2005 · Trusted by 500+ Students
+        </span>
+
+        <h1 class="hero-title fade-up fade-up-d1">
+          Your Partner in<br />
+          <em class="hero-title-accent">Reaching Enlightenment</em>
+        </h1>
+
+        <p class="hero-sub fade-up fade-up-d2">
+          Placeholder — Add a compelling 2-line pitch about Konfido's mission.
+          Expert guidance for university admissions and entrance exam preparation across India.
+        </p>
+
+        <div class="hero-actions fade-up fade-up-d3">
+          <a href="#contact" class="btn btn-primary hero-btn">
+            Book Free Counselling
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#universities" class="btn btn-outline-white hero-btn">
+            Our Universities
+          </a>
+        </div>
+
+        <div class="hero-trust fade-up fade-up-d4">
+          <div class="trust-avatars">
+            {['S','R','A','M'].map(l => <span class="trust-avatar">{l}</span>)}
+          </div>
+          <p class="trust-label"><strong>500+</strong> students placed this year alone</p>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up fade-up-d2">
+        <div class="hero-card-stack">
+          <!-- Floating card 1 -->
+          <div class="hero-float-card hfc-top">
+            <div class="hfc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div>
+              <p class="hfc-title">Admission Confirmed</p>
+              <p class="hfc-sub">Marwadi University · B.Tech CSE</p>
+            </div>
+          </div>
+
+          <!-- Main visual box -->
+          <div class="hero-main-visual">
+            <img src="/logo.png" alt="Konfido Education" class="hero-logo-large" />
+            <p class="hero-visual-label">Reach Enlightenment</p>
+          </div>
+
+          <!-- Floating card 2 -->
+          <div class="hero-float-card hfc-bottom">
+            <div class="hfc-icon hfc-icon-red">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <p class="hfc-title">95% Success Rate</p>
+              <p class="hfc-sub">Admissions across 4 universities</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <a href="#about" class="scroll-down" aria-label="Scroll to next section">
+      <span class="scroll-down-dot"></span>
+    </a>
+  </section>
+
+  <!-- ═══ ABOUT STRIP ══════════════════════════════════════ -->
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="about-left fade-up">
+        <span class="section-tag">About Konfido</span>
+        <h2 class="section-title">Two Decades of Educational Excellence</h2>
+        <div class="divider-line"></div>
+      </div>
+      <div class="about-right fade-up fade-up-d2">
+        <p class="about-para">
+          <strong>Placeholder</strong> — Add a paragraph about Konfido's founding story, mission, and what makes it a trusted name since 2005. Keep it corporate and credible.
+        </p>
+        <p class="about-para" style="margin-top: 16px;">
+          Placeholder — Add a second paragraph about the team's expertise, geographic reach, or the breadth of services offered to students.
+        </p>
+        <a href="#services" class="btn btn-outline" style="margin-top: 28px;">Explore Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+  <Services />
+  <Universities />
+  <Process />
+  <Testimonials />
+  <Contact />
+  <Footer />
+</Layout>
+
+<style>
+/* ── HERO ─────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 50%, #0e2040 100%);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 76px;
+}
+
+/* Background decorations */
+.hero-bg { position: absolute; inset: 0; pointer-events: none; }
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.hero-circle-1 {
+  width: 700px; height: 700px;
+  top: -200px; right: -150px;
+}
+.hero-circle-2 {
+  width: 420px; height: 420px;
+  bottom: -100px; left: -80px;
+  border-color: rgba(200,16,46,.1);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding-block: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero content */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 7px 16px;
+  border-radius: 40px;
+  margin-bottom: 24px;
+}
+.badge-dot {
+  width: 7px; height: 7px;
+  background: #4cec8a;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #4cec8a;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.18;
+  margin-bottom: 22px;
+}
+.hero-title-accent {
+  color: transparent;
+  background: linear-gradient(90deg, #e8c76b, #f5e09a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.62);
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.hero-btn { font-size: 0.92rem; }
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.trust-avatars { display: flex; }
+.trust-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--navy-light);
+  border: 2px solid rgba(255,255,255,.3);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -8px;
+}
+.trust-avatar:first-child { margin-left: 0; }
+.trust-label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,.55);
+}
+.trust-label strong { color: var(--white); }
+
+/* Hero Visual */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+.hero-main-visual {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.hero-logo-large { height: 80px; width: auto; filter: brightness(0) invert(1); }
+.hero-visual-label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255,255,255,.45);
+  letter-spacing: 0.04em;
+}
+
+/* Floating cards */
+.hero-float-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-lg);
+  min-width: 240px;
+}
+.hfc-top { top: -24px; right: -32px; }
+.hfc-bottom { bottom: -24px; left: -32px; }
+.hfc-icon {
+  width: 40px; height: 40px;
+  background: rgba(13,43,85,.08);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+.hfc-icon-red { background: rgba(200,16,46,.08); color: var(--crimson); }
+.hfc-title { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
+.hfc-sub { font-size: 0.71rem; color: var(--text-muted); margin-top: 1px; }
+
+/* Scroll indicator */
+.scroll-down {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  animation: bounce 2.2s infinite;
+}
+.scroll-down-dot {
+  width: 5px; height: 5px;
+  background: rgba(255,255,255,.5);
+  border-radius: 50%;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── ABOUT ────────────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-para {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.85;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 48px;
+  }
+  .hero-sub { margin-inline: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-visual { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>

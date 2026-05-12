@@ -1,0 +1,145 @@
+---
+const links = [
+  { label: 'Home',         href: '#home' },
+  { label: 'About',        href: '#about' },
+  { label: 'Services',     href: '#services' },
+  { label: 'Universities', href: '#universities' },
+  { label: 'Contact',      href: '#contact' },
+];
+---
+
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="Konfido Home">
+      <img src="/logo.png" alt="Konfido Education & Training" height="54" />
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      {links.map(l => (
+        <a href={l.href} class="nav-link">{l.label}</a>
+      ))}
+    </nav>
+
+    <a href="#contact" class="btn btn-primary nav-cta">Enquire Now</a>
+
+    <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="navMobile">
+    {links.map(l => (
+      <a href={l.href} class="nav-mobile-link">{l.label}</a>
+    ))}
+    <a href="#contact" class="btn btn-primary" style="margin-top:8px;width:100%;justify-content:center;">Enquire Now</a>
+  </div>
+</header>
+
+<style>
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 76px;
+}
+.nav-logo img { height: 54px; width: auto; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+}
+.nav-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color var(--transition);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--crimson);
+  transition: width var(--transition);
+}
+.nav-link:hover { color: var(--navy); }
+.nav-link:hover::after { width: 100%; }
+
+.nav-cta { margin-left: 16px; padding: 10px 22px; font-size: 0.85rem; }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  margin-left: auto;
+  padding: 4px;
+}
+.nav-burger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  padding: 16px 24px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+.nav-mobile-link {
+  padding: 12px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-burger { display: flex; }
+  .nav-mobile.open { display: flex; }
+  .nav-inner { gap: 0; }
+}
+</style>
+
+<script>
+const burger  = document.getElementById('navBurger')!;
+const mobile  = document.getElementById('navMobile')!;
+const navbar  = document.getElementById('navbar')!;
+
+burger.addEventListener('click', () => {
+  const open = mobile.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
+});
+
+// Close mobile on link click
+mobile.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => mobile.classList.remove('open'))
+);
+
+// Scroll shadow
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+</script>
