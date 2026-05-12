@@ -8,13 +8,13 @@ import Footer from '../../components/Footer.astro';
   <Navbar />
   
   <div class="uni-hero">
-    <div class="container uni-hero-inner">
-      <div class="uni-badge">Centre of Excellence · Govt. of Gujarat</div>
-      <div class="uni-title-wrap">
+    <div class="container">
+      <div class="uni-hero-content">
         <div class="uni-logo-box">
           <img src="/logos/marwadi.png" alt="Marwadi University" class="uni-logo" />
         </div>
         <div class="uni-hero-text">
+          <div class="uni-badge">Centre of Excellence · Govt. of Gujarat</div>
           <h1 class="uni-title">Marwadi University</h1>
           <p class="uni-location">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -23,100 +23,92 @@ import Footer from '../../components/Footer.astro';
         </div>
       </div>
     </div>
-    <!-- Decorative background -->
-    <div class="uni-hero-bg"></div>
   </div>
 
   <section class="section uni-content">
     <div class="container">
+      
+      <!-- Recognitions Bar (Fixed broken images) -->
+      <div class="recognitions-bar">
+        <div class="rec-item">
+          <div class="rec-badge naac-badge">NAAC</div>
+          <div>
+            <span class="rec-title">Accredited</span>
+            <strong class="rec-grade">A+ Grade</strong>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-badge nirf-badge">NIRF</div>
+          <div>
+            <span class="rec-title">Ranking 2025</span>
+            <strong class="rec-grade">Top 150 Band</strong>
+          </div>
+        </div>
+        <div class="rec-item">
+           <div class="rec-badge nba-badge">NBA</div>
+           <div>
+            <span class="rec-title">Tier-1</span>
+            <strong class="rec-grade">Accreditation</strong>
+          </div>
+        </div>
+      </div>
+
       <div class="uni-grid">
         <!-- Left Column: About & Courses -->
         <div class="uni-main">
           
-          <!-- Recognitions / Badges -->
-          <div class="recognitions-bar fade-up">
-            <div class="rec-item">
-              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/National_Assessment_and_Accreditation_Council_logo.png/220px-National_Assessment_and_Accreditation_Council_logo.png" alt="NAAC" class="rec-logo naac-logo" />
-              <div>
-                <span class="rec-title">NAAC Accredited</span>
-                <strong class="rec-grade">A+ Grade</strong>
-              </div>
-            </div>
-            <div class="rec-item">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/NIRF_Logo.png/800px-NIRF_Logo.png" alt="NIRF" class="rec-logo nirf-logo" />
-              <div>
-                <span class="rec-title">NIRF Ranking 2025</span>
-                <strong class="rec-grade">Top 150 Band</strong>
-              </div>
-            </div>
-            <div class="rec-item">
-               <div class="rec-nba-logo">NBA</div>
-               <div>
-                <span class="rec-title">Tier-1</span>
-                <strong class="rec-grade">Accreditation</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="content-block fade-up fade-up-d1">
+          <div class="content-block">
             <h2>About Marwadi University</h2>
             <p>
               Accredited with a prestigious <strong>NAAC A+ grade</strong> and recognized as a "Centre of Excellence" by the Government of Gujarat, Marwadi University is a premier institution dedicated to academic brilliance and holistic development.
             </p>
             <p>
-              With Tier-1 NBA accreditation and a top 150 NIRF ranking, MU provides a state-of-the-art 32-acre campus where innovation thrives. It hosts over 500 top-tier companies annually, boasting exceptional placement records with packages up to <strong>34.5 LPA</strong>.
+              With Tier-1 NBA accreditation and a top 150 NIRF ranking, MU provides a state-of-the-art 32-acre campus where innovation thrives. It hosts over 500 top-tier companies annually, boasting exceptional placement records.
             </p>
           </div>
           
-          <!-- Top Recruiters Marquee -->
-          <div class="content-block fade-up fade-up-d2">
+          <!-- Top Recruiters Grid instead of Marquee for better mobile/desktop rendering -->
+          <div class="content-block">
             <h2>Top Recruiters</h2>
-            <div class="recruiters-wrap">
-              <div class="recruiters-track">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" alt="TCS" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" alt="Capgemini" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" />
-                <!-- Duplicated for seamless loop -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" alt="TCS" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" alt="Capgemini" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" />
-              </div>
+            <div class="recruiters-grid">
+              <div class="recruiter-logo">Amazon</div>
+              <div class="recruiter-logo">TCS</div>
+              <div class="recruiter-logo">Infosys</div>
+              <div class="recruiter-logo">Capgemini</div>
+              <div class="recruiter-logo">IBM</div>
+              <div class="recruiter-logo">Wipro</div>
             </div>
           </div>
 
-          <div class="content-block fade-up fade-up-d3">
+          <div class="content-block">
             <h2>Programs Offered</h2>
             <div class="courses-grid">
               <div class="course-card">
-                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
                 <h3>Engineering & Tech</h3>
-                <p>B.Tech, M.Tech in CS, AI, Mechanical, Civil, Cyber Security.</p>
+                <p>B.Tech, M.Tech (CS, AI, Mech, Civil)</p>
               </div>
               <div class="course-card">
-                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                <h3>Management & Commerce</h3>
-                <p>BBA, MBA, Business Analytics, Finance, Marketing.</p>
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <h3>Management</h3>
+                <p>BBA, MBA, Business Analytics</p>
               </div>
               <div class="course-card">
-                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                <h3>Computer Applications</h3>
-                <p>BCA, MCA, B.Sc IT with industry-aligned curriculum.</p>
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <h3>IT & Computer Apps</h3>
+                <p>BCA, MCA, B.Sc IT</p>
               </div>
               <div class="course-card">
-                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <h3>Law, Pharmacy & Sciences</h3>
-                <p>BA LLB, B.Pharma, B.Sc/M.Sc, Physiotherapy.</p>
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3>Law & Sciences</h3>
+                <p>BA LLB, B.Pharma, B.Sc/M.Sc</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Right Column: Stats & Form -->
-        <div class="uni-sidebar fade-up fade-up-d2">
+        <div class="uni-sidebar">
           
           <div class="stats-box placement-box">
             <div class="pb-icon">
@@ -159,7 +151,7 @@ import Footer from '../../components/Footer.astro';
               <h3>Secure Your Admission</h3>
               <p>Get priority guidance from Konfido's expert counsellors.</p>
             </div>
-            <a href="/#contact" class="btn btn-primary btn-block">Apply Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href="/#contact" class="btn btn-white btn-block">Apply Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
       </div>
@@ -173,33 +165,11 @@ import Footer from '../../components/Footer.astro';
   /* Hero */
   .uni-hero {
     margin-top: 76px;
-    background: linear-gradient(135deg, var(--navy) 0%, #0d1e3a 100%);
+    background: var(--navy);
+    padding: 60px 0;
     position: relative;
-    overflow: hidden;
-    padding: 70px 0;
   }
-  .uni-hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top right, rgba(200,16,46,.15) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .uni-hero-inner { position: relative; z-index: 1; }
-  
-  .uni-badge {
-    display: inline-block;
-    background: rgba(255,255,255,.1);
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 6px 14px;
-    border-radius: 30px;
-    margin-bottom: 24px;
-    border: 1px solid rgba(255,255,255,.2);
-  }
-
-  .uni-title-wrap {
+  .uni-hero-content {
     display: flex;
     align-items: center;
     gap: 32px;
@@ -207,26 +177,36 @@ import Footer from '../../components/Footer.astro';
   .uni-logo-box {
     background: var(--white);
     padding: 16px;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
   }
   .uni-logo {
-    height: 90px;
+    height: 80px;
     width: auto;
-    object-fit: contain;
     display: block;
+  }
+  .uni-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.1);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
   }
   .uni-title {
     font-family: var(--font-serif);
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: var(--white);
     margin-bottom: 8px;
     line-height: 1.1;
   }
   .uni-location {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,.75);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,.8);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -235,51 +215,55 @@ import Footer from '../../components/Footer.astro';
   /* Grid Layout */
   .uni-grid {
     display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 64px;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
     align-items: start;
   }
 
   /* Main Content */
-  .content-block { margin-bottom: 56px; }
+  .uni-content {
+    padding-top: 40px;
+  }
+  .content-block { margin-bottom: 48px; }
   
   /* Recognitions Bar */
   .recognitions-bar {
     display: flex;
-    gap: 24px;
+    gap: 16px;
     flex-wrap: wrap;
-    background: var(--white);
+    background: var(--off-white);
     padding: 24px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 48px;
-    margin-top: -32px;
+    margin-bottom: 40px;
   }
   .rec-item {
     display: flex;
     align-items: center;
     gap: 16px;
     flex: 1;
-    min-width: 220px;
+    min-width: 200px;
   }
-  .rec-logo {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
+  .rec-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.1;
+    flex-shrink: 0;
   }
-  .naac-logo { height: 54px; }
-  .nirf-logo { height: 42px; filter: grayscale(0.2); }
-  .rec-nba-logo {
-    height: 48px; width: 48px;
-    background: #004d99; /* NBA blue */
-    color: white; font-weight: 800; font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%; border: 3px solid #e0ebf5;
-  }
+  .naac-badge { background: #fef08a; color: #854d0e; border: 2px solid #fde047; }
+  .nirf-badge { background: #e0e7ff; color: #3730a3; border: 2px solid #c7d2fe; }
+  .nba-badge { background: #dcfce7; color: #166534; border: 2px solid #bbf7d0; }
+
   .rec-title {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -287,168 +271,137 @@ import Footer from '../../components/Footer.astro';
   }
   .rec-grade {
     display: block;
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1.05rem;
+    font-weight: 700;
     color: var(--navy);
   }
 
   .uni-main h2 {
     font-family: var(--font-serif);
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--navy);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .uni-main p {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-mid);
-    line-height: 1.8;
+    line-height: 1.7;
     margin-bottom: 16px;
   }
 
-  /* Recruiters Marquee */
-  .recruiters-wrap {
-    overflow: hidden;
-    background: var(--off-white);
-    padding: 32px 0;
-    border-radius: var(--radius-lg);
+  /* Recruiters Grid */
+  .recruiters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+  }
+  .recruiter-logo {
+    background: var(--white);
     border: 1px solid var(--border);
-    position: relative;
-  }
-  .recruiters-wrap::before, .recruiters-wrap::after {
-    content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2;
-  }
-  .recruiters-wrap::before { left: 0; background: linear-gradient(to right, var(--off-white), transparent); }
-  .recruiters-wrap::after { right: 0; background: linear-gradient(to left, var(--off-white), transparent); }
-  
-  .recruiters-track {
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--navy-mid);
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
-    gap: 60px;
-    width: max-content;
-    animation: scroll 20s linear infinite;
-  }
-  .recruiters-track img {
-    height: 36px;
-    width: auto;
-    object-fit: contain;
-    filter: grayscale(1) opacity(0.7);
-    transition: filter var(--transition), transform var(--transition);
-  }
-  .recruiters-track img:hover {
-    filter: grayscale(0) opacity(1);
-    transform: scale(1.05);
-  }
-
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 30px)); }
+    justify-content: center;
+    height: 64px;
   }
 
   /* Courses Grid */
   .courses-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 28px;
+    gap: 16px;
   }
   .course-card {
     background: var(--white);
-    padding: 24px;
+    padding: 20px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .course-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--navy-light);
   }
   .cc-icon {
     color: var(--crimson);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     background: rgba(200,16,46,.08);
-    width: 44px; height: 44px;
+    width: 40px; height: 40px;
     display: flex; align-items: center; justify-content: center;
     border-radius: 8px;
   }
   .course-card h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--navy);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
   .course-card p {
     font-size: 0.9rem;
     color: var(--text-mid);
     margin-bottom: 0;
+    line-height: 1.4;
   }
 
   /* Sidebar */
   .uni-sidebar {
-    position: sticky;
-    top: 100px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
 
-  /* Highlight placement box */
-  .placement-box {
-    background: linear-gradient(135deg, var(--navy) 0%, #1e3a63 100%);
-    color: var(--white);
+  /* Fix for placement box background override issue */
+  .stats-box {
+    background: var(--off-white);
+    padding: 28px;
+    border-radius: var(--radius-md);
+    border-top: 4px solid var(--navy);
+  }
+  .stats-box.placement-box {
+    background: var(--navy) !important;
+    color: var(--white) !important;
     border-top: none !important;
     text-align: center;
-    position: relative;
-    overflow: hidden;
   }
-  .placement-box::before {
-    content: ''; position: absolute; inset: 0;
-    background: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-  }
+  
   .pb-icon {
-    width: 60px; height: 60px;
+    width: 54px; height: 54px;
     background: rgba(255,255,255,.1);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px;
-    color: #4ade80; /* bright green */
+    margin: 0 auto 12px;
+    color: #4ade80;
   }
   .placement-box h4 {
-    font-size: 1rem; color: rgba(255,255,255,.8); font-weight: 500; margin-bottom: 8px;
+    font-size: 1rem; color: rgba(255,255,255,.8); font-weight: 500; margin-bottom: 6px;
   }
   .pb-amount {
-    font-size: 2.8rem; font-weight: 800; font-family: var(--font-serif);
+    font-size: 2.5rem; font-weight: 800; font-family: var(--font-serif);
     line-height: 1; margin-bottom: 8px; color: #fff;
   }
-  .pb-amount span { font-size: 1.2rem; opacity: 0.8; font-weight: 500; }
+  .pb-amount span { font-size: 1rem; opacity: 0.8; font-weight: 500; }
   .placement-box p { font-size: 0.9rem; color: #a5b4fc; margin: 0; }
 
-  .stats-box {
-    background: var(--off-white);
-    padding: 32px;
-    border-radius: var(--radius-lg);
-    border-top: 4px solid var(--navy);
-  }
   .stats-box h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--navy);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .stats-list {
     list-style: none;
     padding: 0; margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
   .stats-list li {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
   }
   .stat-icon {
-    width: 42px; height: 42px;
+    width: 36px; height: 36px;
     background: var(--white);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
@@ -464,49 +417,53 @@ import Footer from '../../components/Footer.astro';
   }
   .stat-value {
     display: block;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--navy);
   }
 
   .apply-box {
-    background: linear-gradient(145deg, var(--crimson) 0%, #a00d25 100%);
-    padding: 32px;
-    border-radius: var(--radius-lg);
+    background: var(--crimson);
+    padding: 28px;
+    border-radius: var(--radius-md);
     color: var(--white);
     text-align: center;
-    box-shadow: 0 10px 20px rgba(200,16,46,.2);
   }
   .apply-header h3 {
     font-family: var(--font-serif);
-    font-size: 1.6rem;
-    margin-bottom: 12px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
     color: var(--white);
   }
   .apply-header p {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,.85);
-    line-height: 1.6;
-    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,.9);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .btn-white {
+    background: var(--white);
+    color: var(--crimson);
+  }
+  .btn-white:hover {
+    background: var(--off-white);
   }
   .btn-block {
     width: 100%;
     justify-content: center;
-    background: var(--white);
-    color: var(--crimson);
-  }
-  .btn-block:hover {
-    background: var(--off-white);
   }
 
-  @media (max-width: 960px) {
-    .uni-grid { grid-template-columns: 1fr; gap: 48px; }
-    .uni-sidebar { position: static; }
+  @media (max-width: 900px) {
+    .uni-grid { grid-template-columns: 1fr; gap: 32px; }
   }
   @media (max-width: 768px) {
+    .uni-hero { padding: 40px 0; }
+    .uni-hero-content { flex-direction: column; text-align: center; gap: 20px; }
+    .uni-title { font-size: 2rem; }
+    .uni-location { justify-content: center; }
     .courses-grid { grid-template-columns: 1fr; }
-    .uni-title-wrap { flex-direction: column; text-align: center; }
-    .uni-title { font-size: 2.2rem; }
-    .recognitions-bar { flex-direction: column; }
+    .recognitions-bar { flex-direction: column; gap: 16px; padding: 16px; }
+    .rec-item { width: 100%; }
+    .recruiters-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
