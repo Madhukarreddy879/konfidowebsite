@@ -13,25 +13,28 @@ const branches = [
 ---
 
 <section class="branches-section" id="branches">
-  <div class="branches-bg">
-    <div class="map-glow map-glow-1"></div>
-    <div class="map-glow map-glow-2"></div>
-    <div class="noise-overlay"></div>
+  <div class="container">
+    <div class="branches-header fade-up">
+      <div class="bh-left">
+        <span class="section-tag">Our Footprint</span>
+        <h2 class="section-title">9 Branches Across AP & TS</h2>
+      </div>
+      <div class="bh-right">
+        <p>Walk into any of our regional centres to speak with a dedicated counsellor today. Swipe to see all locations.</p>
+        <div class="swipe-hint">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="container relative z-10">
-    <div class="branches-header">
-      <span class="section-tag section-tag-light fade-up">Our Footprint</span>
-      <h2 class="section-title text-white fade-up fade-up-d1">9 Branches Across AP & Telangana</h2>
-      <p class="branches-sub fade-up fade-up-d2">Expert guidance, always within your reach. Walk into any of our regional centres to speak with a dedicated counsellor today.</p>
-    </div>
-
-    <div class="branches-grid">
-      {branches.map((branch, index) => (
-        <div class="branch-card fade-up" style={`animation-delay: ${index * 100}ms`}>
+  <div class="carousel-container fade-up fade-up-d1">
+    <div class="branches-carousel">
+      {branches.map((branch) => (
+        <div class="branch-card">
           <div class="bc-top">
             <div class="bc-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div class="bc-badge">{branch.state}</div>
           </div>
@@ -39,9 +42,7 @@ const branches = [
           <h3 class="bc-city">{branch.city}</h3>
           
           <div class="bc-details">
-            <p class="bc-address">
-              {branch.address}
-            </p>
+            <p class="bc-address">{branch.address}</p>
           </div>
 
           <div class="bc-footer">
@@ -58,180 +59,161 @@ const branches = [
 
 <style>
   .branches-section {
-    position: relative;
-    padding: 100px 0;
-    background: #0a1428; /* Extremely deep navy */
-    overflow: hidden;
-  }
-
-  /* Abstract map glow background */
-  .branches-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .map-glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.4;
-  }
-  .map-glow-1 {
-    top: -10%; left: 10%;
-    width: 50vw; height: 50vw;
-    background: rgba(30, 80, 160, 0.4);
-  }
-  .map-glow-2 {
-    bottom: -20%; right: 5%;
-    width: 60vw; height: 60vw;
-    background: rgba(200, 16, 46, 0.15); /* Crimson hint */
-  }
-  .noise-overlay {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
+    padding: 80px 0;
+    background: var(--off-white); /* Light background to blend cleanly */
+    border-top: 1px solid var(--border);
+    overflow: hidden; /* Hide horizontal scrollbar off edge */
   }
 
   .branches-header {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    gap: 40px;
   }
-  .section-tag-light {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
+  .bh-left { max-width: 500px; }
+  .bh-right {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
   }
-  .text-white { color: #ffffff !important; }
-  .branches-sub {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.65);
+  .bh-right p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    margin-bottom: 12px;
     line-height: 1.6;
-    margin-top: 16px;
+  }
+  .swipe-hint {
+    display: flex;
+    align-items: center;
+    color: var(--crimson);
+    animation: swipeLeftRight 2s infinite ease-in-out;
+  }
+  @keyframes swipeLeftRight {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
   }
 
-  /* Glassmorphism Grid */
-  .branches-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+  /* Horizontal Scrolling Carousel */
+  .carousel-container {
+    padding-left: max(20px, calc((100vw - 1200px) / 2)); /* Align with container but bleed right */
+    padding-right: 20px;
+  }
+
+  .branches-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 30px; /* Space for shadow/scrollbar */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+  }
+  .branches-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
   }
 
   .branch-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 28px;
+    flex: 0 0 340px; /* Fixed width cards */
+    scroll-snap-align: start;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(16px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .branch-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
   }
   .branch-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
+    border-color: var(--crimson);
+    box-shadow: 0 15px 30px rgba(200,16,46,0.08);
   }
-  .branch-card:hover::before { opacity: 1; }
 
   .bc-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    position: relative; z-index: 1;
+    align-items: center;
+    margin-bottom: 16px;
   }
   .bc-icon {
-    width: 40px; height: 40px;
-    background: rgba(200, 16, 46, 0.15); /* Crimson tinted background */
-    color: #ff4d6d;
+    width: 36px; height: 36px;
+    background: rgba(200, 16, 46, 0.08);
+    color: var(--crimson);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 15px rgba(200, 16, 46, 0.2);
   }
   .bc-badge {
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.65rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 4px 10px;
     border-radius: 20px;
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.6);
+    background: var(--navy-light);
+    color: var(--white);
   }
 
   .bc-city {
     font-family: var(--font-serif);
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--white);
-    margin-bottom: 12px;
-    position: relative; z-index: 1;
+    color: var(--navy);
+    margin-bottom: 8px;
   }
 
   .bc-details {
     flex-grow: 1;
-    margin-bottom: 24px;
-    position: relative; z-index: 1;
+    margin-bottom: 20px;
   }
   .bc-address {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.6;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.5;
     margin: 0;
   }
 
   .bc-footer {
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    position: relative; z-index: 1;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
   }
   .bc-phone {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--white);
+    color: var(--navy);
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     transition: color 0.2s;
   }
   .bc-phone:hover {
-    color: #ff4d6d;
+    color: var(--crimson);
   }
   .phone-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 24px; height: 24px;
-    background: rgba(255,255,255,0.1);
+    background: var(--off-white);
+    color: var(--navy);
     border-radius: 50%;
   }
-
-  @media (max-width: 992px) {
-    .branches-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .bc-phone:hover .phone-icon {
+    background: var(--crimson);
+    color: var(--white);
   }
-  
-  @media (max-width: 640px) {
-    .branches-grid {
-      grid-template-columns: 1fr;
+
+  @media (max-width: 768px) {
+    .branches-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
     }
-    .branches-section {
-      padding: 60px 0;
-    }
+    .bh-right { text-align: left; align-items: flex-start; }
+    .branch-card { flex: 0 0 300px; }
   }
 </style>
