@@ -7,66 +7,159 @@ import Footer from '../../components/Footer.astro';
 <Layout>
   <Navbar />
   
-  <div class="uni-header">
-    <div class="container">
+  <div class="uni-hero">
+    <div class="container uni-hero-inner">
+      <div class="uni-badge">Centre of Excellence · Govt. of Gujarat</div>
       <div class="uni-title-wrap">
-        <img src="/logos/marwadi.png" alt="Marwadi University Logo" class="uni-logo" />
-        <div>
+        <div class="uni-logo-box">
+          <img src="/logos/marwadi.png" alt="Marwadi University" class="uni-logo" />
+        </div>
+        <div class="uni-hero-text">
           <h1 class="uni-title">Marwadi University</h1>
-          <p class="uni-location">Rajkot, Gujarat</p>
+          <p class="uni-location">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rajkot, Gujarat
+          </p>
         </div>
       </div>
     </div>
+    <!-- Decorative background -->
+    <div class="uni-hero-bg"></div>
   </div>
 
   <section class="section uni-content">
     <div class="container">
       <div class="uni-grid">
-        <!-- Left: About & Courses -->
+        <!-- Left Column: About & Courses -->
         <div class="uni-main">
-          <h2>About Marwadi University</h2>
-          <p>
-            Marwadi University (MU) is a premier higher education institution located in Rajkot, Gujarat. 
-            Renowned for its state-of-the-art campus and innovative teaching methodologies, MU offers a diverse range of undergraduate, postgraduate, and doctoral programs. It is committed to fostering academic excellence, research, and holistic development.
-          </p>
           
-          <h2 style="margin-top: 40px;">Courses Offered</h2>
-          <div class="courses-grid">
-            <div class="course-card">
-              <h3>Engineering (B.Tech / M.Tech)</h3>
-              <p>Computer Science, Mechanical, Civil, IT, AI & Data Science.</p>
+          <!-- Recognitions / Badges -->
+          <div class="recognitions-bar fade-up">
+            <div class="rec-item">
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/National_Assessment_and_Accreditation_Council_logo.png/220px-National_Assessment_and_Accreditation_Council_logo.png" alt="NAAC" class="rec-logo naac-logo" />
+              <div>
+                <span class="rec-title">NAAC Accredited</span>
+                <strong class="rec-grade">A+ Grade</strong>
+              </div>
             </div>
-            <div class="course-card">
-              <h3>Management (BBA / MBA)</h3>
-              <p>Finance, Marketing, HR, Business Analytics, International Business.</p>
+            <div class="rec-item">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/NIRF_Logo.png/800px-NIRF_Logo.png" alt="NIRF" class="rec-logo nirf-logo" />
+              <div>
+                <span class="rec-title">NIRF Ranking 2025</span>
+                <strong class="rec-grade">Top 150 Band</strong>
+              </div>
             </div>
-            <div class="course-card">
-              <h3>Computer Applications (BCA / MCA)</h3>
-              <p>Software Development, Cloud Computing, Cyber Security.</p>
+            <div class="rec-item">
+               <div class="rec-nba-logo">NBA</div>
+               <div>
+                <span class="rec-title">Tier-1</span>
+                <strong class="rec-grade">Accreditation</strong>
+              </div>
             </div>
-            <div class="course-card">
-              <h3>Law & Science</h3>
-              <p>BA LLB, B.Sc, M.Sc in various specialized disciplines.</p>
+          </div>
+
+          <div class="content-block fade-up fade-up-d1">
+            <h2>About Marwadi University</h2>
+            <p>
+              Accredited with a prestigious <strong>NAAC A+ grade</strong> and recognized as a "Centre of Excellence" by the Government of Gujarat, Marwadi University is a premier institution dedicated to academic brilliance and holistic development.
+            </p>
+            <p>
+              With Tier-1 NBA accreditation and a top 150 NIRF ranking, MU provides a state-of-the-art 32-acre campus where innovation thrives. It hosts over 500 top-tier companies annually, boasting exceptional placement records with packages up to <strong>34.5 LPA</strong>.
+            </p>
+          </div>
+          
+          <!-- Top Recruiters Marquee -->
+          <div class="content-block fade-up fade-up-d2">
+            <h2>Top Recruiters</h2>
+            <div class="recruiters-wrap">
+              <div class="recruiters-track">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" alt="TCS" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" alt="Capgemini" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" />
+                <!-- Duplicated for seamless loop -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" alt="TCS" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" alt="Capgemini" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" />
+              </div>
+            </div>
+          </div>
+
+          <div class="content-block fade-up fade-up-d3">
+            <h2>Programs Offered</h2>
+            <div class="courses-grid">
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                <h3>Engineering & Tech</h3>
+                <p>B.Tech, M.Tech in CS, AI, Mechanical, Civil, Cyber Security.</p>
+              </div>
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <h3>Management & Commerce</h3>
+                <p>BBA, MBA, Business Analytics, Finance, Marketing.</p>
+              </div>
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <h3>Computer Applications</h3>
+                <p>BCA, MCA, B.Sc IT with industry-aligned curriculum.</p>
+              </div>
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3>Law, Pharmacy & Sciences</h3>
+                <p>BA LLB, B.Pharma, B.Sc/M.Sc, Physiotherapy.</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Right: Stats & Apply -->
-        <div class="uni-sidebar">
+        <!-- Right Column: Stats & Form -->
+        <div class="uni-sidebar fade-up fade-up-d2">
+          
+          <div class="stats-box placement-box">
+            <div class="pb-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h4>Highest Placement</h4>
+            <div class="pb-amount">₹34.5 <span>LPA</span></div>
+            <p>Average Package: ₹5-6 LPA</p>
+          </div>
+
           <div class="stats-box">
             <h3>Quick Facts</h3>
-            <ul>
-              <li><strong>NAAC Grade:</strong> A+</li>
-              <li><strong>Campus:</strong> 32+ Acres</li>
-              <li><strong>Placement Rate:</strong> 90%+</li>
-              <li><strong>Highest Package:</strong> 34.5 LPA</li>
+            <ul class="stats-list">
+              <li>
+                <span class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+                <div>
+                  <span class="stat-label">Campus Area</span>
+                  <strong class="stat-value">32+ Acres</strong>
+                </div>
+              </li>
+              <li>
+                <span class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <div>
+                  <span class="stat-label">Placement Rate</span>
+                  <strong class="stat-value">90%+</strong>
+                </div>
+              </li>
+              <li>
+                <span class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span>
+                <div>
+                  <span class="stat-label">Recruiting Companies</span>
+                  <strong class="stat-value">500+ Annually</strong>
+                </div>
+              </li>
             </ul>
           </div>
 
           <div class="apply-box">
-            <h3>Interested in Marwadi?</h3>
-            <p>Get expert guidance on the application process, scholarships, and fee structure.</p>
-            <a href="/#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Apply Now</a>
+            <div class="apply-header">
+              <h3>Secure Your Admission</h3>
+              <p>Get priority guidance from Konfido's expert counsellors.</p>
+            </div>
+            <a href="/#contact" class="btn btn-primary btn-block">Apply Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
       </div>
@@ -77,138 +170,343 @@ import Footer from '../../components/Footer.astro';
 </Layout>
 
 <style>
-  .uni-header {
-    margin-top: 76px; /* navbar height */
-    background: var(--navy);
-    padding: 60px 0;
-    color: var(--white);
-    border-bottom: 4px solid var(--crimson);
+  /* Hero */
+  .uni-hero {
+    margin-top: 76px;
+    background: linear-gradient(135deg, var(--navy) 0%, #0d1e3a 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0;
   }
+  .uni-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(200,16,46,.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .uni-hero-inner { position: relative; z-index: 1; }
+  
+  .uni-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.1);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,.2);
+  }
+
   .uni-title-wrap {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
+  }
+  .uni-logo-box {
+    background: var(--white);
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
   }
   .uni-logo {
-    background: var(--white);
-    padding: 12px;
-    border-radius: var(--radius-md);
     height: 90px;
     width: auto;
     object-fit: contain;
+    display: block;
   }
   .uni-title {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.1;
   }
   .uni-location {
     font-size: 1.1rem;
-    color: rgba(255,255,255,.7);
+    color: rgba(255,255,255,.75);
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
+  /* Grid Layout */
   .uni-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr 380px;
+    gap: 64px;
     align-items: start;
-    padding-top: 40px;
   }
 
   /* Main Content */
-  .uni-main h2 {
-    font-family: var(--font-serif);
-    font-size: 1.8rem;
-    color: var(--navy);
-    margin-bottom: 16px;
+  .content-block { margin-bottom: 56px; }
+  
+  /* Recognitions Bar */
+  .recognitions-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: var(--white);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 48px;
+    margin-top: -32px;
   }
-  .uni-main p {
-    font-size: 1rem;
-    color: var(--text-mid);
-    line-height: 1.8;
+  .rec-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 220px;
+  }
+  .rec-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+  .naac-logo { height: 54px; }
+  .nirf-logo { height: 42px; filter: grayscale(0.2); }
+  .rec-nba-logo {
+    height: 48px; width: 48px;
+    background: #004d99; /* NBA blue */
+    color: white; font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; border: 3px solid #e0ebf5;
+  }
+  .rec-title {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+  .rec-grade {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--navy);
   }
 
+  .uni-main h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .uni-main p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  /* Recruiters Marquee */
+  .recruiters-wrap {
+    overflow: hidden;
+    background: var(--off-white);
+    padding: 32px 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .recruiters-wrap::before, .recruiters-wrap::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2;
+  }
+  .recruiters-wrap::before { left: 0; background: linear-gradient(to right, var(--off-white), transparent); }
+  .recruiters-wrap::after { right: 0; background: linear-gradient(to left, var(--off-white), transparent); }
+  
+  .recruiters-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+  }
+  .recruiters-track img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(1) opacity(0.7);
+    transition: filter var(--transition), transform var(--transition);
+  }
+  .recruiters-track img:hover {
+    filter: grayscale(0) opacity(1);
+    transform: scale(1.05);
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 30px)); }
+  }
+
+  /* Courses Grid */
   .courses-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 28px;
   }
   .course-card {
-    background: var(--off-white);
+    background: var(--white);
     padding: 24px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--navy-light);
+  }
+  .cc-icon {
+    color: var(--crimson);
+    margin-bottom: 16px;
+    background: rgba(200,16,46,.08);
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
   }
   .course-card h3 {
     font-size: 1.1rem;
+    font-weight: 700;
     color: var(--navy);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .course-card p {
     font-size: 0.9rem;
+    color: var(--text-mid);
     margin-bottom: 0;
   }
 
   /* Sidebar */
+  .uni-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Highlight placement box */
+  .placement-box {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e3a63 100%);
+    color: var(--white);
+    border-top: none !important;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .placement-box::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+  }
+  .pb-icon {
+    width: 60px; height: 60px;
+    background: rgba(255,255,255,.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    color: #4ade80; /* bright green */
+  }
+  .placement-box h4 {
+    font-size: 1rem; color: rgba(255,255,255,.8); font-weight: 500; margin-bottom: 8px;
+  }
+  .pb-amount {
+    font-size: 2.8rem; font-weight: 800; font-family: var(--font-serif);
+    line-height: 1; margin-bottom: 8px; color: #fff;
+  }
+  .pb-amount span { font-size: 1.2rem; opacity: 0.8; font-weight: 500; }
+  .placement-box p { font-size: 0.9rem; color: #a5b4fc; margin: 0; }
+
   .stats-box {
     background: var(--off-white);
     padding: 32px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     border-top: 4px solid var(--navy);
-    margin-bottom: 24px;
   }
   .stats-box h3 {
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--navy);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
-  .stats-box ul {
+  .stats-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 0; margin: 0;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+  }
+  .stats-list li {
+    display: flex;
+    align-items: center;
     gap: 16px;
   }
-  .stats-box li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
+  .stat-icon {
+    width: 42px; height: 42px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy-mid);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
   }
-  .stats-box li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+  .stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .stat-value {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
   }
 
   .apply-box {
-    background: var(--white);
+    background: linear-gradient(145deg, var(--crimson) 0%, #a00d25 100%);
     padding: 32px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(200,16,46,.2);
   }
-  .apply-box h3 {
+  .apply-header h3 {
     font-family: var(--font-serif);
-    font-size: 1.4rem;
-    color: var(--crimson);
+    font-size: 1.6rem;
     margin-bottom: 12px;
+    color: var(--white);
   }
-  .apply-box p {
+  .apply-header p {
     font-size: 0.95rem;
-    color: var(--text-mid);
+    color: rgba(255,255,255,.85);
     line-height: 1.6;
     margin-bottom: 24px;
   }
+  .btn-block {
+    width: 100%;
+    justify-content: center;
+    background: var(--white);
+    color: var(--crimson);
+  }
+  .btn-block:hover {
+    background: var(--off-white);
+  }
 
-  @media (max-width: 900px) {
-    .uni-grid { grid-template-columns: 1fr; gap: 40px; }
+  @media (max-width: 960px) {
+    .uni-grid { grid-template-columns: 1fr; gap: 48px; }
+    .uni-sidebar { position: static; }
+  }
+  @media (max-width: 768px) {
     .courses-grid { grid-template-columns: 1fr; }
     .uni-title-wrap { flex-direction: column; text-align: center; }
+    .uni-title { font-size: 2.2rem; }
+    .recognitions-bar { flex-direction: column; }
   }
 </style>
