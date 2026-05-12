@@ -30,11 +30,11 @@ import Footer from '../../components/Footer.astro';
       
       <!-- Recognitions Bar -->
       <div class="recognitions-flex">
-        <img src="/accred/naac.png" alt="NAAC A+ Grade" />
-        <img src="/accred/nirf.png" alt="NIRF 150 Ranking" />
-        <img src="/accred/nba.png" alt="NBA Accreditation" />
-        <img src="/accred/no1_g.png" alt="No.1 in Gujarat" />
-        <img src="/accred/ranking_w.png" alt="Top Ranking" />
+        <div class="logo-crop"><img src="/accred/naac.png" alt="NAAC A+ Grade" /></div>
+        <div class="logo-crop"><img src="/accred/nirf.png" alt="NIRF 150 Ranking" /></div>
+        <div class="logo-crop"><img src="/accred/nba.png" alt="NBA Accreditation" /></div>
+        <div class="logo-crop"><img src="/accred/no1_g.png" alt="No.1 in Gujarat" /></div>
+        <div class="logo-crop"><img src="/accred/ranking_w.png" alt="Top Ranking" /></div>
       </div>
 
       <div class="uni-grid">
@@ -55,12 +55,12 @@ import Footer from '../../components/Footer.astro';
           <div class="content-block recruiters-section">
             <h2>Top Recruiters</h2>
             <div class="recruiters-flex">
-              <img src="/companylogos/amazon.png" alt="Amazon" />
-              <img src="/companylogos/tcs.png" alt="TCS" />
-              <img src="/companylogos/congz.png" alt="Cognizant" />
-              <img src="/companylogos/adani.png" alt="Adani" />
-              <img src="/companylogos/google.png" alt="Google" />
-              <img src="/companylogos/wipro.png" alt="Wipro" />
+              <div class="logo-crop grayscale"><img src="/companylogos/amazon.png" alt="Amazon" /></div>
+              <div class="logo-crop grayscale"><img src="/companylogos/tcs.png" alt="TCS" /></div>
+              <div class="logo-crop grayscale"><img src="/companylogos/congz.png" alt="Cognizant" /></div>
+              <div class="logo-crop grayscale"><img src="/companylogos/adani.png" alt="Adani" /></div>
+              <div class="logo-crop grayscale"><img src="/companylogos/google.png" alt="Google" /></div>
+              <div class="logo-crop grayscale"><img src="/companylogos/wipro.png" alt="Wipro" /></div>
             </div>
           </div>
 
@@ -213,24 +213,14 @@ import Footer from '../../components/Footer.astro';
   /* Recognitions Flex Bar */
   .recognitions-flex {
     display: flex;
-    gap: 40px;
+    gap: 24px;
     flex-wrap: wrap;
     background: var(--off-white);
-    padding: 24px 32px;
+    padding: 32px;
     border-radius: var(--radius-md);
     margin-bottom: 50px;
     justify-content: center;
     align-items: center;
-  }
-  .recognitions-flex img {
-    height: 60px; /* Reduced slightly so they aren't overwhelming */
-    width: auto;
-    object-fit: contain;
-    mix-blend-mode: multiply; /* Magically removes white backgrounds */
-    transition: transform 0.3s ease;
-  }
-  .recognitions-flex img:hover {
-    transform: scale(1.08);
   }
 
   .uni-main h2 {
@@ -256,21 +246,39 @@ import Footer from '../../components/Footer.astro';
   .recruiters-flex {
     display: flex;
     flex-wrap: wrap;
-    gap: 32px;
+    gap: 20px;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
-  .recruiters-flex img {
-    height: 50px; /* Much bigger logos */
-    max-width: 140px;
-    object-fit: contain;
-    mix-blend-mode: multiply; /* Removes white backgrounds */
+
+  /* Logo Cropping for massive padded images */
+  .logo-crop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 70px;
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--radius-sm);
+  }
+  .logo-crop img {
+    width: 500px; /* Scale way up to push empty white space out of bounds */
+    height: auto;
+    max-width: none;
+    mix-blend-mode: multiply;
+    transition: transform 0.3s ease;
+  }
+  .logo-crop:hover img {
+    transform: scale(1.1);
+  }
+  
+  .grayscale img {
     filter: grayscale(100%) opacity(0.7);
-    transition: all 0.3s ease;
   }
-  .recruiters-flex img:hover {
+  .grayscale:hover img {
     filter: grayscale(0%) opacity(1);
-    transform: scale(1.08);
+    transform: scale(1.1);
   }
 
   /* Courses Grid */
@@ -435,8 +443,9 @@ import Footer from '../../components/Footer.astro';
     .uni-title { font-size: 2.2rem; }
     .uni-location { justify-content: center; }
     .courses-grid { grid-template-columns: 1fr; }
-    .recognitions-flex { gap: 24px; padding: 20px; }
-    .recognitions-flex img { height: 48px; }
-    .recruiters-flex { justify-content: center; }
+    .recognitions-flex { gap: 12px; padding: 20px 10px; }
+    .logo-crop { width: 130px; height: 60px; }
+    .logo-crop img { width: 400px; }
+    .recruiters-flex { justify-content: center; gap: 12px; }
   }
 </style>
