@@ -6,6 +6,7 @@ const universities = [
     tag: 'NAAC Accredited',
     logo: '/logos/marwadi.png',
     logoBg: '#fff',
+    link: '/universities/marwadi'
   },
   {
     name: 'NIMS University',
@@ -13,6 +14,7 @@ const universities = [
     tag: 'UGC Recognised',
     logo: '/logos/nims.png',
     logoBg: '#fff',
+    link: '/universities/nims'
   },
   {
     name: 'Suresh Gyan Vihar University',
@@ -20,6 +22,7 @@ const universities = [
     tag: 'NAAC Accredited',
     logo: '/logos/sgvu.png',
     logoBg: '#fff',
+    link: '/universities/sgvu'
   },
   {
     name: 'Kalasalingam Academy (KARE)',
@@ -27,6 +30,7 @@ const universities = [
     tag: 'NAAC A Grade',
     logo: '/logos/kare.png',
     logoBg: '#fff',
+    link: '/universities/kare'
   },
 ];
 ---
@@ -58,7 +62,7 @@ const universities = [
               </svg>
               {uni.location}
             </p>
-            <a href="#contact" class="uni-cta">Learn More →</a>
+            <a href={uni.link} class="uni-cta">Learn More →</a>
           </div>
         </div>
       ))}
