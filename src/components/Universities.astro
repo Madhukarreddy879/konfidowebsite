@@ -50,7 +50,15 @@ const universities = [
       {universities.map((uni, i) => (
         <div class={`uni-card fade-up fade-up-d${i + 1}`}>
           <div class="uni-logo-box">
-            <img src={uni.logo} alt={`${uni.name} logo`} class="uni-logo-img" />
+            <img 
+              src={uni.logo} 
+              alt={`${uni.name} logo`} 
+              class="uni-logo-img"
+              width={uni.logoW}
+              height={uni.logoH}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div class="uni-info">
             <span class="uni-badge">{uni.tag}</span>
