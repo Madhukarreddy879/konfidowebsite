@@ -262,7 +262,7 @@ ${hasSource ? `<div class="field">
 </html>`;
 
   try {
-    const response = await fetch('https://api.zeptomail.com/v1.1/email', {
+    const response = await fetch('https://api.zeptomail.in/v1.1/email', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
