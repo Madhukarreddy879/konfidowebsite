@@ -176,8 +176,8 @@ import Footer from '../../components/Footer.astro';
     const form = document.getElementById('enquiryForm');
     const successMsg = document.getElementById('formSuccess');
     
-    // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
-    const WORKER_URL = 'https://konfido-lead-handler.YOUR_SUBDOMAIN.workers.dev';
+    // Cloudflare Worker URL for lead submissions
+    const WORKER_URL = 'https://api.konfido.co.in';
     
     if (form) {
       form.addEventListener('submit', async function(e) {
