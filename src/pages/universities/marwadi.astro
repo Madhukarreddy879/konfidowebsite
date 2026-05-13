@@ -171,10 +171,13 @@ import Footer from '../../components/Footer.astro';
   <Footer />
 
 <script>
-  // Enquiry Form Handling
+  // Enquiry Form Handling with Cloudflare Worker + ZeptoMail
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('enquiryForm');
     const successMsg = document.getElementById('formSuccess');
+    
+    // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
+    const WORKER_URL = 'https://konfido-lead-handler.YOUR_SUBDOMAIN.workers.dev';
     
     if (form) {
       form.addEventListener('submit', async function(e) {
@@ -196,32 +199,41 @@ import Footer from '../../components/Footer.astro';
         };
         
         try {
-          // For now, log to console and show success
-          console.log('Enquiry submitted:', formData);
+          // Send to Cloudflare Worker
+          const response = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
           
-          // Simulate API call delay
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          const result = await response.json();
           
-          // Show success message
-          form.style.display = 'none';
-          successMsg.style.display = 'block';
-          
-          // Track conversion for digital marketing
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'enquiry_submit', {
-              'event_category': 'lead',
-              'event_label': 'Marwadi University'
-            });
-          }
-          
-          // Facebook Pixel tracking (if installed)
-          if (typeof fbq !== 'undefined') {
-            fbq('track', 'Lead');
+          if (result.success) {
+            // Show success message
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+            
+            // Track conversion for digital marketing
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'enquiry_submit', {
+                'event_category': 'lead',
+                'event_label': 'Marwadi University'
+              });
+            }
+            
+            // Facebook Pixel tracking (if installed)
+            if (typeof fbq !== 'undefined') {
+              fbq('track', 'Lead');
+            }
+          } else {
+            throw new Error(result.error || 'Submission failed');
           }
           
         } catch (error) {
           console.error('Form submission error:', error);
-          alert('Something went wrong. Please try again or contact us directly.');
+          alert('Something went wrong. Please try again or contact us directly at info@konfido.co.in');
           submitBtn.innerHTML = originalText;
           submitBtn.disabled = false;
         }
