@@ -89,10 +89,85 @@ const address = 'RTO, House No 6-3569/1-2-1/C, Khairathabad (Rockdale Hills), Op
         </button>
         <p class="form-note">We respond within 24 hours · Your information is confidential.</p>
       </form>
+
+      <div id="contactFormSuccess" class="form-success" style="display: none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h4>Thank You!</h4>
+        <p>Your enquiry has been submitted. Our counsellors will contact you within 24 hours.</p>
+      </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('contactFormSuccess');
+
+    const WORKER_URL = 'https://api.konfido.co.in';
+
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
+
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          course: document.getElementById('course').value,
+          source: window.location.href,
+          submittedAt: new Date().toISOString()
+        };
+
+        try {
+          const response = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-API-Key': import.meta.env.PUBLIC_API_KEY,
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'contact_submit', {
+                'event_category': 'lead',
+                'event_label': 'Contact Form'
+              });
+            }
+            if (typeof fbq !== 'undefined') {
+              fbq('track', 'Lead');
+            }
+          } else {
+            const errMsg = result.errors
+              ? Object.values(result.errors).join('\n')
+              : result.error || 'Submission failed';
+            alert(errMsg);
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }
+        } catch (error) {
+          console.error('Contact form error:', error);
+          alert('Something went wrong. Please try again or contact us directly at info@konfido.co.in');
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  });
+</script>
 
 <style>
 .contact-section {
@@ -227,6 +302,23 @@ a.cd-value:hover { opacity: 0.75; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .form-row { grid-template-columns: 1fr; }
 }
+.form-success {
+  text-align: center;
+  padding: 24px 16px;
+}
+.form-success h4 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin: 16px 0 12px;
+  color: var(--navy);
+}
+.form-success p {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+
 @media (max-width: 500px) {
   .contact-form-wrap { padding: 24px 18px; }
 }

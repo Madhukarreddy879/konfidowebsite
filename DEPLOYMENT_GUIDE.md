@@ -8,8 +8,9 @@ Complete guide to deploy the Cloudflare Worker + ZeptoMail integration for captu
 
 - [x] Domain verified in ZeptoMail: `konfido.co.in`
 - [x] Sender email verified: `enquiry@konfido.co.in`
+- [x] Custom domain `api.konfido.co.in` added to Cloudflare (DNS proxied / orange-cloud)
 - [ ] ZeptoMail API Token obtained
-- [ ] Cloudflare account created
+- [ ] Cloudflare account with access to `konfido.co.in` zone
 - [ ] Wrangler CLI installed
 
 ---
@@ -22,78 +23,86 @@ Complete guide to deploy the Cloudflare Worker + ZeptoMail integration for captu
 2. Navigate to **Setup** → **SMTP/API**
 3. Click on the **API** tab
 4. Copy your **Send Mail Token** (starts with `Zoho-enczapikey`)
-5. Keep it safe - you'll need it in Step 3
+5. Keep it safe — you'll need it in Step 3
 
 ### Step 2: Install Wrangler CLI
 
 ```bash
-# Install globally
 npm install -g wrangler
-
-# Or use npx (no installation needed)
-npx wrangler --version
+wrangler --version
 ```
 
-### Step 3: Configure the Worker
+### Step 3: Configure Secrets
 
-1. Open `cloudflare-worker/wrangler.toml`
-2. Replace the dummy token with your real token:
+```bash
+cd workers/cloudflare-worker
 
-```toml
-[vars]
-ZEPTOMAIL_API_TOKEN = "Zoho-enczapikey YOUR_ACTUAL_TOKEN_HERE"
-TO_EMAIL = "info@konfido.co.in"
-FROM_EMAIL = "enquiry@konfido.co.in"
+# Store sensitive values as encrypted secrets (NOT in wrangler.toml)
+wrangler secret put ZEPTOMAIL_API_TOKEN
+wrangler secret put SHARED_SECRET
 ```
+
+Generate a random 32-character string for `SHARED_SECRET`:
+```bash
+node -e "console.log(require('crypto').randomBytes(16).toString('hex'))"
+```
+
+Then update `.env` in the project root with the same value:
+```
+PUBLIC_API_KEY=your-generated-32-char-secret
+```
+
+This single `.env` file feeds both forms — the Contact form and the Marwadi enquiry form — via `import.meta.env.PUBLIC_API_KEY`. No duplicate copies needed.
+
+The `TO_EMAIL` and `FROM_EMAIL` vars can stay in `wrangler.toml` (they're not sensitive).
 
 ### Step 4: Login to Cloudflare
 
 ```bash
-cd cloudflare-worker
 wrangler login
 ```
 
-This will open a browser window to authenticate.
-
-### Step 5: Deploy the Worker
+### Step 5: Deploy the Worker + Set Up Custom Domain
 
 ```bash
 # Install dependencies
+cd workers/cloudflare-worker
 npm install
 
-# Deploy to Cloudflare
+# Deploy the Worker
 wrangler deploy
 ```
 
-After deployment, you'll see output like:
-```
-✨ Successfully published your Worker
-🌍 https://konfido-lead-handler.YOUR_SUBDOMAIN.workers.dev
-```
+After deploying, add the custom domain route in the Cloudflare Dashboard:
 
-**Copy this URL** - you'll need it for Step 6.
+1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) → your zone (`konfido.co.in`)
+2. Navigate to **DNS** → **Records**
+3. Ensure `api.konfido.co.in` is a proxied (orange-cloud) A/AAAA/CNAME record pointing to any IP (e.g., `192.0.2.1`) — Cloudflare only needs it proxied
+4. Navigate to **Workers Routes** (or Workers & Pages → konfido-lead-handler → Triggers → Routes)
+5. Add route: `api.konfido.co.in/*` → select `konfido-lead-handler`
 
-### Step 6: Update Astro Form
-
-1. Open `konfido-site/src/pages/universities/marwadi.astro`
-2. Find this line in the `<script>` section:
-
-```javascript
-const WORKER_URL = 'https://konfido-lead-handler.YOUR_SUBDOMAIN.workers.dev';
+Or via CLI:
+```bash
+wrangler routes add api.konfido.co.in/*
 ```
 
-3. Replace it with your actual Worker URL from Step 5
+### Step 6: Verify Frontend Config
+
+The frontend already points to `https://api.konfido.co.in`. Just make sure `.env` has your real key:
+
+```
+PUBLIC_API_KEY=your-generated-32-char-secret
+```
+
+This value is used by both `src/pages/universities/marwadi.astro` and `src/components/Contact.astro` via `import.meta.env.PUBLIC_API_KEY` — no duplicate copies to maintain.
 
 ### Step 7: Deploy Astro Site
 
 ```bash
 cd konfido-site
-
-# Build the site
 npm run build
 
-# Deploy to your hosting (Vercel/Netlify/Cloudflare Pages)
-# Example for Cloudflare Pages:
+# Deploy to Cloudflare Pages
 npx wrangler pages deploy dist
 ```
 
@@ -104,148 +113,105 @@ npx wrangler pages deploy dist
 ### Test the Worker Directly
 
 ```bash
-curl -X POST https://YOUR_WORKER_URL \
+# Should FAIL without API key
+curl -X POST https://api.konfido.co.in \
   -H "Content-Type: application/json" \
+  -d '{"name":"Test User","email":"test@example.com","phone":"9876543210","university":"Marwadi University"}'
+
+# Should SUCCEED with API key
+curl -X POST https://api.konfido.co.in \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: your-generated-32-char-secret" \
   -d '{
     "name": "Test User",
     "email": "test@example.com",
     "phone": "9876543210",
-    "university": "Marwadi University",
-    "source": "https://konfido.co.in/universities/marwadi",
-    "submittedAt": "2025-01-15T10:30:00.000Z"
+    "university": "Marwadi University"
   }'
+
+# Should FAIL after 5 rapid requests (rate limit)
+for i in {1..6}; do
+  curl -X POST https://api.konfido.co.in \
+    -H "Content-Type: application/json" \
+    -H "X-API-Key: your-generated-32-char-secret" \
+    -d '{"name":"T","email":"t@t.com","phone":"1234567890"}' &
+done
 ```
 
-Expected response:
-```json
-{
-  "success": true,
-  "message": "Lead submitted successfully"
-}
-```
+Expected responses:
+- No API key → `401 {"success":false,"error":"Unauthorized"}`
+- Valid request → `200 {"success":true,"message":"Lead submitted successfully"}`
+- Rate limited → `429 {"success":false,"error":"Too many requests. Please try again later."}`
+- Bad input → `400 {"success":false,"error":"Validation failed","errors":{...}}`
 
-### Test the Form
+### Test Both Forms
 
-1. Visit your deployed site
-2. Go to `/universities/marwadi`
-3. Fill out the enquiry form
-4. Submit
-5. Check `info@konfido.co.in` for the email
+1. Visit `https://konfido.co.in` → fill out and submit the Contact form
+2. Visit `https://konfido.co.in/universities/marwadi` → fill out and submit the Enquiry form
+3. Check `info@konfido.co.in` for both emails
 
 ---
 
-## 📧 Email Template Preview
+## 🔐 Security Architecture
 
-The email sent to `info@konfido.co.in` will look like:
+| Layer | Implementation |
+|---|---|
+| **Auth** | `X-API-Key` header checked against `SHARED_SECRET` (encrypted via `wrangler secrets`) |
+| **CORS** | Restricted to `https://konfido.co.in`, `https://www.konfido.co.in`, and `http://localhost:4321` (dev) |
+| **Rate Limit** | 5 requests per IP per 60 seconds (in-memory per Worker isolate) |
+| **Input Validation** | Server-side: name (2-100 chars), email (regex + len), phone (10-15 digits), course (whitelist) |
+| **HTML Sanitize** | All user input escaped before embedding in email HTML body |
+| **Secrets** | API tokens stored via `wrangler secret put`, never committed to git |
 
-```
-┌─────────────────────────────────────┐
-│   🎓 New Lead Enquiry               │
-│   Konfido Education & Training      │
-├─────────────────────────────────────┤
-│                                     │
-│   [Marwadi University]              │
-│                                     │
-│   Full Name                         │
-│   John Doe                          │
-│                                     │
-│   Email Address                     │
-│   john@example.com                  │
-│                                     │
-│   Phone Number                      │
-│   9876543210                        │
-│                                     │
-│   University Interest               │
-│   Marwadi University                │
-│                                     │
-│   Source Page                       │
-│   https://konfido.co.in/...         │
-│                                     │
-│   Submitted At                      │
-│   15/01/2025, 4:00:00 PM IST        │
-│                                     │
-└─────────────────────────────────────┘
-```
+### Important Notes
+
+- The `API_KEY` value is **visible in the browser** since the Astro site is static. This is acceptable — it prevents other websites from calling your Worker directly, but an attacker could extract it from your site's JS. The rate limiter + CORS provide defense-in-depth.
+- For production, consider moving the key to a backend or using Cloudflare Access/Zero Trust if you need stronger auth.
+- Rate limiting is **per Worker isolate** (not global). For a low-traffic marketing site this is fine. If you need global limits, use Cloudflare KV or Durable Objects.
+
+---
+
+## 📧 Email Template
+
+Emails include:
+- University or Course name as a badge
+- Full name, email (mailto link), phone (tel link)
+- Source page URL
+- Submission timestamp (IST timezone)
 
 ---
 
 ## 🔧 Troubleshooting
 
-### Issue: "Authorization failed"
-**Solution**: Check your ZeptoMail API token in `wrangler.toml`
-
-### Issue: "Email not received"
-**Solution**: 
-1. Check ZeptoMail dashboard for delivery status
-2. Verify `enquiry@konfido.co.in` is verified
-3. Check spam folder in `info@konfido.co.in`
-
-### Issue: "CORS error"
-**Solution**: Worker already has CORS enabled. Check browser console for actual error.
-
-### Issue: "Worker not found"
-**Solution**: Make sure you deployed with `wrangler deploy` and updated the URL in Astro
+| Issue | Solution |
+|---|---|
+| 401 Unauthorized | Check `X-API-Key` header matches `SHARED_SECRET` in Worker |
+| 429 Rate Limited | Wait 60 seconds. Increase limit in Worker if needed. |
+| CORS error | Verify request `Origin` is in the allowed origins list |
+| Email not received | Check ZeptoMail dashboard, verify sender is verified, check spam |
+| Custom domain not resolving | Ensure DNS is proxied (orange cloud) in Cloudflare, route is configured |
+| Worker not found on route | Verify the Worker Route is correctly set up for `api.konfido.co.in/*` |
 
 ---
 
 ## 📊 Monitoring
 
-### View Worker Logs
+### Worker Logs
+1. [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → `konfido-lead-handler` → **Logs**
 
-1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Navigate to **Workers & Pages**
-3. Click on **konfido-lead-handler**
-4. Go to **Logs** tab
-
-### Check Email Delivery
-
-1. Login to [ZeptoMail Dashboard](https://www.zoho.com/zeptomail/)
-2. Go to **Reports** → **Email Logs**
-3. Filter by date/recipient
-
----
-
-## 🔐 Security Best Practices
-
-1. **Never commit** your real API token to Git
-2. Use Cloudflare **Secrets** for production:
-   ```bash
-   wrangler secret put ZEPTOMAIL_API_TOKEN
-   ```
-3. Enable **rate limiting** in Cloudflare if needed
-4. Monitor logs for suspicious activity
-
----
-
-## 📝 Next Steps
-
-1. ✅ Deploy Worker
-2. ✅ Update Astro form URL
-3. ✅ Test submission
-4. ✅ Verify email received
-5. 🔄 Replicate for other university pages (NIMS, SGVU, KARE)
-6. 📊 Set up analytics tracking
-7. 🎨 Customize email template if needed
-
----
-
-## 🆘 Support
-
-If you encounter issues:
-1. Check the troubleshooting section above
-2. Review Worker logs in Cloudflare Dashboard
-3. Check ZeptoMail email logs
-4. Contact your development team
+### Email Delivery
+1. [ZeptoMail Dashboard](https://www.zoho.com/zeptomail/) → **Reports** → **Email Logs**
 
 ---
 
 ## 📚 Resources
 
 - [Cloudflare Workers Docs](https://developers.cloudflare.com/workers/)
+- [Cloudflare Worker Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/)
 - [ZeptoMail API Docs](https://www.zoho.com/zeptomail/help/api-index.html)
 - [Wrangler CLI Docs](https://developers.cloudflare.com/workers/wrangler/)
 
 ---
 
-**Last Updated**: January 2025
-**Version**: 1.0.0
+**Last Updated**: May 2026
+**Version**: 2.0.0

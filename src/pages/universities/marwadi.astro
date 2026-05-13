@@ -177,7 +177,7 @@ import Footer from '../../components/Footer.astro';
     const successMsg = document.getElementById('formSuccess');
     
     // Cloudflare Worker URL for lead submissions
-    const WORKER_URL = 'https://konfido-lead-handler.madhukarreddy879.workers.dev';
+    const WORKER_URL = 'https://api.konfido.co.in';
     
     if (form) {
       form.addEventListener('submit', async function(e) {
@@ -204,6 +204,7 @@ import Footer from '../../components/Footer.astro';
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              'X-API-Key': import.meta.env.PUBLIC_API_KEY,
             },
             body: JSON.stringify(formData)
           });
