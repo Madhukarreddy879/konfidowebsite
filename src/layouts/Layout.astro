@@ -29,19 +29,33 @@ const {
     <link rel="icon" type="image/webp" href="/logo.webp" />
     <title>{title}</title>
 
-    <!-- Google Fonts preconnect -->
+    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  </head>
-  <body>
-    <slot />
-  </body>
-</html>
-nt -->
-    <link rel="preload" href="/logo.webp" as="image" type="image/webp" />
     
-    <!-- Font display swap for faster text rendering -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Preload critical logo for LCP -->
+    <link rel="preload" href="/logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    
+    <!-- Inline critical font CSS to prevent render blocking -->
+    <style>
+      /* Critical font display - prevent FOIT */
+      @font-face {
+        font-family: 'Playfair Display';
+        font-display: swap;
+        src: local('Playfair Display');
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        font-display: swap;
+        src: local('DM Sans');
+      }
+    </style>
+    
+    <!-- Async font loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    </noscript>
   </head>
   <body>
     <slot />
