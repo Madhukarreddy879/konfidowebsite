@@ -7,3 +7,6 @@ ZEPTOMAIL_API_TOKEN = "Zoho-enczapikey PHtE6r1cQOC6jmd5+xMC5PC8FcH2Z9goqbwyeQBC4
 TO_EMAIL = "info@konfido.co.in"
 FROM_EMAIL = "enquiry@konfido.co.in"
 SHARED_SECRET = "219e2389d8ce84340a63789ad111c443"
+[observability.logs]
+enabled = false
+invocation_logs = true

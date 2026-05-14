@@ -1,0 +1,73 @@
+---
+// FloatingCallBtn.astro
+---
+<a href="tel:+919502644931" class="floating-call-btn" aria-label="Call Now">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </svg>
+  Call Now
+</a>
+
+<style>
+  /* Floating Call Button */
+  .floating-call-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--crimson, #c8102e);
+    color: var(--white, #ffffff);
+    padding: 0 24px;
+    height: 56px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(200, 16, 46, 0.4);
+    z-index: 999;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: slideUpFade 0.6s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  @keyframes slideUpFade {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .floating-call-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(200, 16, 46, 0.5);
+    color: var(--white);
+  }
+  
+  .floating-call-btn svg {
+    animation: phoneRing 2s infinite;
+  }
+  
+  @keyframes phoneRing {
+    0%, 100% { transform: rotate(0); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-10deg); }
+    30% { transform: rotate(15deg); }
+    40% { transform: rotate(-10deg); }
+    50% { transform: rotate(0); }
+  }
+
+  @media (max-width: 768px) {
+    .floating-call-btn {
+      bottom: 20px;
+      right: 20px;
+      height: 50px;
+      padding: 0 20px;
+      font-size: 0.95rem;
+    }
+  }
+</style>
