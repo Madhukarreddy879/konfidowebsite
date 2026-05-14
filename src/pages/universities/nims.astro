@@ -1,0 +1,655 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Contact from '../../components/Contact.astro';
+---
+
+<Layout title="NIMS University Admissions | Konfido Education" description="Get expert guidance for NIMS University admissions. Explore courses, placements, and campus details.">
+  <Navbar />
+  
+  <div class="uni-hero">
+    <div class="container">
+      <div class="uni-hero-grid">
+        <!-- Left: University Info -->
+        <div class="uni-hero-content">
+          <div class="uni-logo-box">
+            <img src="/logos/nims.webp" alt="NIMS University" class="uni-logo" width="247" height="80" decoding="async" fetchpriority="high" />
+          </div>
+          <div class="uni-hero-text">
+            <div class="uni-badge">NAAC Accredited · Top Medical & Tech University</div>
+            <h1 class="uni-title">NIMS University</h1>
+            <p class="uni-location">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Jaipur, Rajasthan
+            </p>
+          </div>
+        </div>
+        
+        <!-- Right: Enquiry Form -->
+        <div class="enquiry-box">
+          <div class="enquiry-header">
+            <h3>Enquire Now</h3>
+            <p>Get expert guidance for NIMS University admissions</p>
+          </div>
+          <form id="enquiryForm" class="enquiry-form">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your full name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" pattern="[0-9]{10}" />
+            </div>
+            <button type="submit" class="btn btn-white btn-block">
+              Submit Enquiry
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </form>
+          <div id="formSuccess" class="form-success" style="display: none;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h4>Thank You!</h4>
+            <p>Your enquiry has been submitted. Our counsellors will contact you within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section uni-content">
+    <div class="container">
+      
+      <!-- Recognitions Bar -->
+      <div class="recognitions-flex">
+        <img src="/accred/naac.webp" alt="NAAC Accredited" width="200" height="90" loading="lazy" decoding="async" />
+        <img src="/accred/ranking_w.webp" alt="Top Ranking" width="200" height="90" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="uni-grid">
+        <!-- Left Column: About & Courses -->
+        <div class="uni-main">
+          
+          <div class="content-block">
+            <h2>About NIMS University</h2>
+            <p>
+              Recognized as one of the largest private universities in India and accredited by <strong>NAAC</strong>, NIMS University is a premier destination for higher education located in the vibrant city of Jaipur, Rajasthan.
+            </p>
+            <p>
+              Established in 2008, NIMS provides a world-class 250-acre campus with state-of-the-art infrastructure. With a strong focus on practical and clinical training, the university offers an environment where innovation thrives, boasting exceptional placement records and hosting top-tier companies annually.
+            </p>
+          </div>
+          
+          <!-- Top Recruiters -->
+          <div class="content-block recruiters-section">
+            <h2>Top Recruiters</h2>
+            <div class="recruiters-flex">
+              <img src="/companylogos/amazon.webp" alt="Amazon" width="150" height="70" loading="lazy" decoding="async" />
+              <img src="/companylogos/tcs.webp" alt="TCS" width="150" height="70" loading="lazy" decoding="async" />
+              <img src="/companylogos/congz.webp" alt="Cognizant" width="150" height="70" loading="lazy" decoding="async" />
+              <img src="/companylogos/adani.webp" alt="Adani" width="150" height="70" loading="lazy" decoding="async" />
+              <img src="/companylogos/google.webp" alt="Google" width="150" height="70" loading="lazy" decoding="async" />
+              <img src="/companylogos/wipro.webp" alt="Wipro" width="150" height="70" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+          <div class="content-block">
+            <h2>Programs Offered</h2>
+            <div class="courses-grid">
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <h3>Medical & Healthcare</h3>
+                <p>MBBS, BDS, B.Sc Nursing, B.Pharm</p>
+              </div>
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                <h3>Engineering & Tech</h3>
+                <p>B.Tech, M.Tech (CS, AI, Mech, Civil)</p>
+              </div>
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <h3>Management</h3>
+                <p>BBA, MBA, Business Analytics</p>
+              </div>
+              <div class="course-card">
+                <div class="cc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3>Law & Sciences</h3>
+                <p>BA LLB, B.Sc/M.Sc</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Stats -->
+        <div class="uni-sidebar">
+          
+          <div class="stats-box placement-box">
+            <div class="pb-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h4>Highest Placement</h4>
+            <div class="pb-amount">₹60 <span>LPA</span></div>
+            <p>Average Package: ₹5-10 LPA</p>
+          </div>
+
+          <div class="stats-box">
+            <h3>Quick Facts</h3>
+            <ul class="stats-list">
+              <li>
+                <span class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+                <div>
+                  <span class="stat-label">Campus Area</span>
+                  <strong class="stat-value">250+ Acres</strong>
+                </div>
+              </li>
+              <li>
+                <span class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <div>
+                  <span class="stat-label">Placement Rate</span>
+                  <strong class="stat-value">90%+</strong>
+                </div>
+              </li>
+              <li>
+                <span class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span>
+                <div>
+                  <span class="stat-label">Recruiting Companies</span>
+                  <strong class="stat-value">400+ Annually</strong>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+
+  <Footer />
+
+<script>
+  // Enquiry Form Handling with Cloudflare Worker
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('enquiryForm');
+    const successMsg = document.getElementById('formSuccess');
+    
+    // Cloudflare Worker URL for lead submissions
+    const WORKER_URL = 'https://api.konfido.co.in';
+    
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Submitting...';
+        submitBtn.disabled = true;
+        
+        // Collect form data
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          university: 'NIMS University',
+          source: window.location.href,
+          submittedAt: new Date().toISOString()
+        };
+        
+        try {
+          // Send to Cloudflare Worker
+          const response = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-API-Key': import.meta.env.PUBLIC_API_KEY,
+            },
+            body: JSON.stringify(formData)
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            // Show success message
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+            
+            // Track conversion for digital marketing
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'enquiry_submit', {
+                'event_category': 'lead',
+                'event_label': 'NIMS University'
+              });
+            }
+            
+            // Facebook Pixel tracking (if installed)
+            if (typeof fbq !== 'undefined') {
+              fbq('track', 'Lead');
+            }
+          } else {
+            throw new Error(result.error || 'Submission failed');
+          }
+          
+        } catch (error) {
+          console.error('Form submission error:', error);
+          alert('Something went wrong. Please try again or contact us directly at info@konfido.co.in');
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  });
+</script>
+</Layout>
+
+<style>
+  /* Hero with Form - Compact & Professional */
+  .uni-hero {
+    margin-top: 76px;
+    background: var(--navy);
+    padding: 32px 0;
+    position: relative;
+  }
+  .uni-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 40px;
+    align-items: center;
+  }
+  .uni-hero-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .uni-logo-box {
+    background: var(--white);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .uni-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .uni-hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .uni-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.1);
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 12px;
+    align-self: flex-start;
+  }
+  .uni-title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+    line-height: 1.15;
+  }
+  .uni-location {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,.75);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Enquiry Form in Hero - Compact */
+  .enquiry-box {
+    background: linear-gradient(145deg, #1a2332 0%, #0f1419 100%);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    color: var(--white);
+    box-shadow: 0 12px 32px rgba(0,0,0,.4);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .enquiry-header {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .enquiry-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .enquiry-header p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,.85);
+    line-height: 1.4;
+    margin: 0;
+  }
+  
+  /* Enquiry Form Styles - Compact */
+  .enquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .form-group label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.9);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .form-group input {
+    padding: 10px 14px;
+    border: 1.5px solid rgba(255,255,255,.2);
+    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,.1);
+    color: var(--white);
+    font-size: 0.92rem;
+    font-family: var(--font-sans);
+    transition: all 0.2s ease;
+  }
+  .form-group input::placeholder {
+    color: rgba(255,255,255,.55);
+    font-size: 0.88rem;
+  }
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--white);
+    background: rgba(255,255,255,.15);
+  }
+  
+  .btn-white {
+    background: var(--crimson);
+    color: var(--white);
+    border: none;
+    padding: 11px 20px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 4px;
+    border-radius: var(--radius-sm);
+  }
+  .btn-white:hover:not(:disabled) {
+    background: var(--crimson-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(200,16,46,.4);
+  }
+  .btn-white:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  .btn-block {
+    width: 100%;
+  }
+  
+  /* Success Message */
+  .form-success {
+    text-align: center;
+    padding: 24px 16px;
+    animation: fadeIn 0.5s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .form-success svg {
+    margin: 0 auto 16px;
+    display: block;
+  }
+  .form-success h4 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .form-success p {
+    font-size: 1rem;
+    color: rgba(255,255,255,.9);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Grid Layout */
+  .uni-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* Main Content */
+  .uni-content {
+    padding-top: 40px;
+  }
+  .content-block { margin-bottom: 48px; }
+  
+  /* Recognitions Flex Bar */
+  .recognitions-flex {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: var(--off-white);
+    padding: 32px 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+  .recognitions-flex img {
+    height: 90px;
+    width: 200px;
+    object-fit: contain;
+    object-position: center;
+    mix-blend-mode: multiply;
+    transition: transform 0.3s ease;
+  }
+  .recognitions-flex img:hover {
+    transform: scale(1.05);
+  }
+
+  .uni-main h2 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .uni-main p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  /* Recruiters Flex Layout */
+  .recruiters-section {
+    background: var(--off-white);
+    padding: 32px;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--crimson);
+  }
+  .recruiters-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .recruiters-flex img {
+    height: 70px;
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+    mix-blend-mode: multiply;
+    filter: grayscale(100%) opacity(0.8);
+    transition: all 0.3s ease;
+  }
+  .recruiters-flex img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+  }
+
+  /* Courses Grid */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .course-card {
+    background: var(--off-white);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+  }
+  .course-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--navy-light);
+  }
+  .cc-icon {
+    color: var(--crimson);
+    margin-bottom: 12px;
+    background: rgba(200,16,46,.08);
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+  }
+  .course-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .course-card p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+
+  /* Sidebar */
+  .uni-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 100px;
+  }
+
+  /* Placement Box */
+  .stats-box {
+    background: var(--off-white);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    border-top: 4px solid var(--navy);
+  }
+  .stats-box.placement-box {
+    background: linear-gradient(135deg, var(--navy) 0%, #173259 100%) !important;
+    color: var(--white) !important;
+    border-top: none !important;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(10, 25, 47, 0.15);
+  }
+  
+  .pb-icon {
+    width: 60px; height: 60px;
+    background: rgba(255,255,255,.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    color: #4ade80;
+  }
+  .placement-box h4 {
+    font-size: 1.1rem; color: rgba(255,255,255,.8); font-weight: 500; margin-bottom: 6px;
+  }
+  .pb-amount {
+    font-size: 3rem; font-weight: 800; font-family: var(--font-serif);
+    line-height: 1; margin-bottom: 8px; color: #fff;
+  }
+  .pb-amount span { font-size: 1.2rem; opacity: 0.8; font-weight: 500; }
+  .placement-box p { font-size: 0.95rem; color: #a5b4fc; margin: 0; }
+
+  .stats-box h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .stats-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .stats-list li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .stat-icon {
+    width: 42px; height: 42px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy-mid);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+  }
+  .stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .stat-value {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  @media (max-width: 1024px) {
+    .uni-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .uni-hero-content { justify-content: center; text-align: center; }
+    .enquiry-box { max-width: 380px; margin: 0 auto; }
+  }
+  @media (max-width: 900px) {
+    .uni-grid { grid-template-columns: 1fr; gap: 40px; }
+    .uni-sidebar { position: static; }
+  }
+  @media (max-width: 768px) {
+    .uni-hero { padding: 24px 0; }
+    .uni-hero-content { flex-direction: column; gap: 16px; }
+    .uni-title { font-size: 1.9rem; }
+    .uni-location { justify-content: center; font-size: 0.85rem; }
+    .uni-logo { height: 50px; }
+    .enquiry-box { padding: 20px; }
+    .enquiry-header h3 { font-size: 1.3rem; }
+    .courses-grid { grid-template-columns: 1fr; }
+    
+    .recognitions-flex img { height: 70px; width: 150px; }
+    .recruiters-flex img { height: 50px; width: 120px; }
+  }
+</style>
