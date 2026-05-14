@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import Contact from '../../components/Contact.astro';
 ---
 
 <Layout>
@@ -48,6 +49,10 @@ import Footer from '../../components/Footer.astro';
               Submit Enquiry
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
+            <a href="tel:+919502644931" class="btn-call-now btn-block">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call Now: +91 95026 44931
+            </a>
           </form>
           <div id="formSuccess" class="form-success" style="display: none;">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -167,6 +172,8 @@ import Footer from '../../components/Footer.astro';
       </div>
     </div>
   </section>
+
+  <Contact />
 
   <Footer />
 
@@ -395,6 +402,27 @@ import Footer from '../../components/Footer.astro';
   .btn-white:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+  }
+  .btn-call-now {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,.3);
+    padding: 11px 20px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+  }
+  .btn-call-now:hover {
+    background: rgba(255,255,255,.1);
+    border-color: var(--white);
   }
   .btn-block {
     width: 100%;
