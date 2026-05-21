@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = 'May 21, 2026';
+---
+
+<Layout title="Terms & Conditions | Konfido Education" description="Terms and Conditions for using Konfido Education & Training website and counselling services.">
+  <Navbar />
+
+  <main class="legal-page">
+    <section class="legal-hero">
+      <div class="container">
+        <span class="section-tag">Legal</span>
+        <h1>Terms & Conditions</h1>
+        <p>Last updated: {lastUpdated}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container legal-content">
+        <p>
+          These Terms & Conditions govern your access to and use of the Konfido Education & Training PVT website, enquiry forms, counselling support, and related admission guidance services. By using our website or submitting an enquiry, you agree to these terms and our Privacy Policy.
+        </p>
+
+        <h2>Use of Our Services</h2>
+        <p>Konfido provides education counselling, admission guidance, course information, university information, and related student support. You agree to use our website and services only for lawful purposes and to provide accurate, current, and complete information.</p>
+
+        <h2>No Admission Guarantee</h2>
+        <p>Admission decisions are made solely by universities, colleges, examination bodies, or relevant authorities. Konfido may assist with guidance and process support, but we do not guarantee admission, scholarships, placements, visas, rankings, fees, or final eligibility outcomes.</p>
+
+        <h2>Information Accuracy</h2>
+        <p>We aim to keep website and counselling information accurate and updated. However, courses, fees, eligibility rules, accreditations, placement data, admission dates, and university policies may change without notice. You should verify final details with the relevant institution or official authority before making a decision.</p>
+
+        <h2>User Responsibilities</h2>
+        <ul>
+          <li>You are responsible for the accuracy of documents and information submitted by you.</li>
+          <li>You must not misuse our website, submit false information, or interfere with website security.</li>
+          <li>You must review university-specific rules, deadlines, eligibility criteria, refund policies, and admission requirements.</li>
+          <li>You are responsible for making final education, financial, and admission decisions.</li>
+        </ul>
+
+        <h2>Fees and Payments</h2>
+        <p>If any counselling, application, service, or facilitation fee is applicable, the amount, scope, and payment terms will be communicated separately. University fees, application fees, exam fees, hostel fees, and third-party charges are governed by the relevant institution or provider.</p>
+
+        <h2>Third-Party Institutions and Links</h2>
+        <p>Our website may mention or link to universities, colleges, recruiters, service providers, or external websites. Such references are for informational purposes. We are not responsible for third-party websites, policies, services, representations, delays, decisions, or errors.</p>
+
+        <h2>Intellectual Property</h2>
+        <p>Website content, branding, design, text, graphics, and other materials are owned by or licensed to Konfido unless otherwise stated. You may not copy, reproduce, modify, distribute, or commercially use our content without prior written permission.</p>
+
+        <h2>Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Konfido will not be liable for indirect, incidental, consequential, or special losses arising from your use of our website or services, including decisions based on educational, career, financial, or admission information.</p>
+
+        <h2>Privacy</h2>
+        <p>Our collection and use of personal information is described in our <a href="/privacy-policy">Privacy Policy</a>. By using our services or submitting an enquiry, you consent to the handling of your information as described there.</p>
+
+        <h2>Changes to These Terms</h2>
+        <p>We may update these Terms & Conditions from time to time. Continued use of our website or services after changes are posted means you accept the revised terms.</p>
+
+        <h2>Contact Us</h2>
+        <p>For questions about these terms, contact us at <a href="mailto:info@konfido.co.in">info@konfido.co.in</a> or call <a href="tel:+919502644931">+91 95026 44931</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.legal-page { padding-top: 76px; }
+.legal-hero {
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: var(--white);
+  padding-block: 72px 56px;
+}
+.legal-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-bottom: 10px;
+}
+.legal-hero p { color: rgba(255,255,255,.62); }
+.legal-content {
+  max-width: 860px;
+  color: var(--text-mid);
+}
+.legal-content h2 {
+  color: var(--navy);
+  font-size: 1.35rem;
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+.legal-content p { margin-bottom: 16px; }
+.legal-content ul {
+  list-style: disc;
+  padding-left: 22px;
+  margin-bottom: 18px;
+}
+.legal-content li { margin-bottom: 8px; }
+.legal-content a {
+  color: var(--crimson);
+  font-weight: 600;
+}
+</style>
