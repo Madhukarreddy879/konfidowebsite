@@ -212,9 +212,7 @@ import Contact from '../../components/Contact.astro';
           const result = await response.json();
           
           if (result.success) {
-            // Show success message
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
+            window.location.href = '/thank-you?source=nims';
             
             // Track conversion for digital marketing
             if (typeof gtag !== 'undefined') {

@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Thank You | Konfido Education" description="Thank you for submitting your enquiry to Konfido Education & Training.">
+  <Navbar />
+
+  <main class="thank-you-page">
+    <section class="thank-you-hero">
+      <div class="container thank-you-inner">
+        <div class="success-icon" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <span class="section-tag section-tag-light">Enquiry Submitted</span>
+        <h1>Thank You</h1>
+        <p>
+          Your enquiry has been submitted successfully. Our counsellors will contact you within 24 hours.
+        </p>
+        <div class="thank-you-actions">
+          <a href="/" class="btn btn-primary">Back to Home</a>
+          <a href="/#universities" class="btn btn-outline-white">Explore Universities</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Event snippet for Submit lead form conversion page -->
+  <script is:inline>
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18175094687/dkKaCK3797AcEJ_fx9pD',
+        'value': 1.0,
+        'currency': 'INR'
+    });
+  </script>
+
+  <Footer />
+</Layout>
+
+<style>
+.thank-you-page {
+  padding-top: 76px;
+}
+.thank-you-hero {
+  min-height: 66vh;
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 58%, #0e2040 100%);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  padding-block: 86px;
+}
+.thank-you-inner {
+  max-width: 760px;
+  text-align: center;
+}
+.success-icon {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: rgba(74,222,128,.12);
+  color: #4ade80;
+  border: 1px solid rgba(74,222,128,.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.section-tag-light {
+  color: rgba(255,255,255,.7);
+  justify-content: center;
+}
+.section-tag-light::before {
+  background: rgba(255,255,255,.4);
+}
+.thank-you-inner h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  margin-bottom: 16px;
+}
+.thank-you-inner p {
+  color: rgba(255,255,255,.68);
+  font-size: 1.08rem;
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.thank-you-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+</style>
