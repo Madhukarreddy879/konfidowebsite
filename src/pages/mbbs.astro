@@ -140,6 +140,9 @@ const steps = [
             <form id="callbackForm" class="enquiry-form">
               <div class="field"><input type="text" name="name" placeholder="Your Name" autocomplete="name" required /></div>
               <div class="field">
+                <input type="email" name="email" placeholder="Your Email" autocomplete="email" required />
+              </div>
+              <div class="field">
                 <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{10,15}" required />
               </div>
               <div class="field"><input type="text" name="city" placeholder="City" autocomplete="address-level2" /></div>
@@ -149,6 +152,11 @@ const steps = [
               <button type="submit" class="btn form-btn">Request Callback</button>
               <div class="form-note">100% free counselling · No hidden charges</div>
             </form>
+            <div id="contactFormSuccess" class="form-success" style="display: none; text-align: center; padding: 24px 16px;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" style="margin: 0 auto;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <h4 style="margin: 16px 0 12px; font-family: var(--font-serif); font-size: 1.5rem; color: var(--navy);">Thank You!</h4>
+              <p style="color: var(--text-mid); font-size: 1rem;">Your request has been received. Our counsellors will call you within 24 hours.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -827,18 +835,71 @@ const steps = [
 </style>
 
 <script>
-  // Enquiry form WhatsApp integration
-  document.getElementById('callbackForm')?.addEventListener('submit', (e) => {
+  const WORKER_URL = 'https://api.konfido.co.in';
+
+  document.getElementById('callbackForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending...';
+    submitBtn.disabled = true;
+
     const f = new FormData(form);
-    const msg = encodeURIComponent(
-      `Hello, I am ${f.get('name')} from ${f.get('city') || '-'}. ` +
-        'I am interested in MBBS admission abroad (Vietnam/Georgia). ' +
-        (f.get('message') ? `Message: ${f.get('message')}` : 'Please call me back.') +
-        ` My number: ${f.get('phone')}`
-    );
-    window.open(`https://wa.me/919502644931?text=${msg}`, '_blank');
+    const city = f.get('city');
+    const msg = f.get('message');
+    const universityText = `City: ${city || 'N/A'} | Message: ${msg || 'None'}`;
+
+    const formData = {
+      name: f.get('name'),
+      email: f.get('email'),
+      phone: f.get('phone'),
+      course: 'Medical / Para-Medical',
+      university: universityText.substring(0, 100), // Max length 100 for API
+      source: window.location.href,
+      submittedAt: new Date().toISOString()
+    };
+
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': import.meta.env.PUBLIC_API_KEY,
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        form.style.display = 'none';
+        const successMsg = document.getElementById('contactFormSuccess');
+        if (successMsg) successMsg.style.display = 'block';
+
+        if (typeof window !== 'undefined' && 'gtag' in window) {
+          (window as any).gtag('event', 'contact_submit', {
+            'event_category': 'lead',
+            'event_label': 'MBBS Form'
+          });
+        }
+        if (typeof window !== 'undefined' && 'fbq' in window) {
+          (window as any).fbq('track', 'Lead');
+        }
+      } else {
+        const errMsg = result.errors
+          ? Object.values(result.errors).join('\n')
+          : result.error || 'Submission failed';
+        alert(errMsg);
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      alert('Something went wrong. Please try again or contact us directly at info@konfido.co.in');
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
   });
 
   // Intersection Observer for fade-up animations
