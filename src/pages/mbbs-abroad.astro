@@ -140,7 +140,7 @@ const steps = [
             <form id="callbackForm" class="enquiry-form">
               <div class="field"><input type="text" name="name" placeholder="Your Name" autocomplete="name" required /></div>
               <div class="field field-row">
-                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{10,15}" required />
+                <input type="tel" id="phoneInput" name="phone" placeholder="Phone Number" autocomplete="tel" inputmode="numeric" pattern="[0-9]{10}" title="Please enter a 10 digit number" required />
                 <input type="text" name="city" placeholder="City" autocomplete="address-level2" />
               </div>
               <div class="field">
@@ -886,6 +886,21 @@ const steps = [
 </style>
 
 <script>
+  // Custom phone validation message
+  const phoneInput = document.getElementById('phoneInput') as HTMLInputElement;
+  if (phoneInput) {
+    phoneInput.addEventListener('input', () => {
+      if (phoneInput.validity.patternMismatch || phoneInput.validity.valueMissing) {
+        phoneInput.setCustomValidity('Please enter a 10 digit number');
+      } else {
+        phoneInput.setCustomValidity('');
+      }
+    });
+    phoneInput.addEventListener('invalid', () => {
+      phoneInput.setCustomValidity('Please enter a 10 digit number');
+    });
+  }
+
   const WORKER_URL = 'https://api.konfido.co.in';
 
   document.getElementById('callbackForm')?.addEventListener('submit', async (e) => {
