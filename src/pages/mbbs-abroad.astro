@@ -798,18 +798,36 @@ const steps = [
 
   /* MEDIA QUERIES */
   @media (max-width: 992px) {
+    .mbbs-hero {
+      padding-top: 110px;
+      padding-bottom: 40px;
+    }
     .mbbs-hero .container {
       grid-template-columns: 1fr;
       text-align: center;
+      gap: 24px;
     }
     .hero-badges {
       justify-content: center;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: 1.85rem;
+      margin-bottom: 12px;
     }
     .hero-sub {
       margin-inline: auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
     .hero-actions {
       justify-content: center;
+      gap: 12px;
+    }
+    .hero-actions .btn {
+      padding: 10px 20px;
+      font-size: 0.85rem;
     }
     .contact-grid {
       grid-template-columns: 1fr;
