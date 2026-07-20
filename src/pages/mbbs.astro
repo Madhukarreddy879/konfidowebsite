@@ -1,0 +1,863 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const stats = [
+  { value: '6+', label: 'Partner Universities' },
+  { value: '500+', label: 'Students Guided' },
+  { value: '2', label: 'Countries — Vietnam & Georgia' },
+  { value: '100%', label: 'Admission Support' },
+];
+
+const reasons = [
+  { icon: '🎓', title: 'Globally Recognized Degree', text: 'Universities listed in WDOMS and recognized by international medical bodies, enabling global practice opportunities.' },
+  { icon: '📘', title: 'NMC-Guided Curriculum', text: 'Curriculum aligned with NMC guidelines to help Indian students stay prepared for licensing and future practice requirements.' },
+  { icon: '🩺', title: 'USMLE, NEXT & PLAB Support', text: 'Structured academic guidance and exam support for USMLE, NEXT and PLAB pathways.' },
+  { icon: '🔬', title: 'Practical Cadaver Exposure', text: 'Hands-on anatomy and practical medical training with cadaver exposure where available through university facilities.' },
+  { icon: '🍽️', title: 'Indian Hostel & Food', text: 'Hostel assistance and Indian food options to make student life abroad more comfortable and familiar.' },
+  { icon: '💰', title: 'Affordable Fee Structure', text: 'Study MBBS at a fraction of the cost of private medical colleges in India, with low living expenses.' },
+  { icon: '🗣️', title: 'English-Medium Programs', text: 'Full MBBS / MD programs taught in English — no language barrier for Indian students.' },
+  { icon: '🏥', title: 'Modern Infrastructure', text: 'Advanced labs, simulation centres and teaching hospitals for strong clinical exposure from day one.' },
+  { icon: '🛡️', title: 'Safe & Student-Friendly', text: 'Vietnam and Georgia are among the safest countries for international students, with welcoming Indian communities.' },
+  { icon: '🤝', title: 'Complete Handholding', text: 'From counselling to campus arrival — documentation, visa, travel, hostel and local support by our Hyderabad team.' },
+];
+
+const countries = [
+  {
+    flag: '🇻🇳',
+    name: 'MBBS in Vietnam',
+    tagline: 'High-quality, affordable medical education close to home',
+    universities: [
+      {
+        abbr: 'HIU',
+        name: 'Hong Bang International University',
+        loc: 'Ho Chi Minh City, Vietnam',
+        desc: 'A leading private university with a strong focus on health sciences, US-accredited standards and modern medical training facilities.',
+        logo: '/mbbs/logos/hiu.png',
+        url: 'https://hiu.vn/en/home/',
+      },
+      {
+        abbr: 'NCTU',
+        name: 'Nam Can Tho University',
+        loc: 'Can Tho, Vietnam',
+        desc: 'Home to its own 300-bed university hospital, offering excellent hands-on clinical training with international-standard infrastructure.',
+        logo: '/mbbs/logos/nctu.webp',
+        url: 'https://nctu.edu.vn/',
+      },
+      {
+        abbr: 'VNU',
+        name: 'Vietnam National University',
+        loc: 'Hanoi & Ho Chi Minh City, Vietnam',
+        desc: "Vietnam's premier national university system, known for academic excellence, research output and internationally ranked programs.",
+        logo: '/mbbs/logos/vnu.svg',
+        url: 'https://en.vnu.edu.vn/',
+      },
+    ],
+  },
+  {
+    flag: '🇬🇪',
+    name: 'MBBS in Georgia',
+    tagline: 'European-standard medical education at an affordable cost',
+    universities: [
+      {
+        abbr: 'EEU',
+        name: 'East European University',
+        loc: 'Tbilisi, Georgia',
+        desc: 'Offers an English-medium Medical Doctor (MD) program with internships across 150+ partner hospitals and organisations.',
+        logo: '/mbbs/logos/eeu.png',
+        url: 'https://eeu.edu.ge/?lang=en',
+      },
+      {
+        abbr: 'GAU',
+        name: 'Georgian American University',
+        loc: 'Tbilisi, Georgia',
+        desc: 'A US-style university delivering western-standard medical education with highly qualified Georgian and international faculty.',
+        logo: '/mbbs/logos/gau.png',
+        url: 'https://gau.edu.ge/',
+      },
+      {
+        abbr: 'UG',
+        name: 'The University of Georgia',
+        loc: 'Tbilisi, Georgia',
+        desc: 'One of the largest private universities in Georgia with modern simulation labs, teaching clinics and a diverse international student body.',
+        logo: '/mbbs/logos/ug.jpg',
+        url: 'https://ug.edu.ge/',
+      },
+    ],
+  },
+];
+
+const steps = [
+  { title: 'Free Counselling', text: 'Call us or visit our Hyderabad office. We assess your profile and help you choose the right country and university.' },
+  { title: 'Documentation & Application', text: 'We prepare and submit your application with all required documents to your chosen university.' },
+  { title: 'Admission Letter & Visa', text: 'Receive your official admission letter, and we handle your complete visa process and documentation.' },
+  { title: 'Fly & Begin MBBS', text: 'Travel assistance, airport pickup, Indian hostel and food guidance, and local support until you settle into campus life.' },
+];
+---
+
+<Layout title="MBBS Abroad in Vietnam & Georgia | Konfido Education & Training">
+  <Navbar />
+  
+  <main>
+    <!-- HERO -->
+    <section class="mbbs-hero pt-32 pb-20 overflow-hidden relative" id="home">
+      <!-- Background elements similar to Konfido's main page -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="z-index: 0;">
+        <div class="absolute w-[700px] h-[700px] rounded-full border border-white/5 -top-48 -right-32"></div>
+        <div class="absolute w-[420px] h-[420px] rounded-full border border-[rgba(200,16,46,0.1)] -bottom-24 -left-20"></div>
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      </div>
+      
+      <!-- We need Konfido specific styles for MBBS Hero -->
+      <div class="container relative z-10 grid md:grid-cols-2 gap-16 items-center min-h-[70vh]">
+        <div class="hero-content">
+          <div class="hero-badges">
+            <span class="badge">🇻🇳 Vietnam</span>
+            <span class="badge">🇬🇪 Georgia</span>
+            <span class="badge badge-outline">Admissions Open 2025–26</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Study <span class="hero-title-accent">MBBS Abroad</span> at Globally Recognised Universities
+          </h1>
+          
+          <p class="hero-sub">
+            Your trusted Hyderabad-based consultancy for MBBS admissions in Vietnam &amp; Georgia.
+            Affordable fees, English-medium programs, and complete end-to-end admission support.
+          </p>
+          
+          <div class="hero-actions">
+            <a href="#enquire" class="btn btn-primary">Get Free Counselling</a>
+            <a href="tel:+919502644931" class="btn btn-outline-white">📞 Call 95026 44931</a>
+          </div>
+        </div>
+        
+        <div class="hero-card-container">
+          <div class="enquiry-card" id="enquire">
+            <h3>Request a Free Callback</h3>
+            <p class="enquiry-sub">Fill the form — our counsellor will call you within 24 hours.</p>
+            <form id="callbackForm" class="enquiry-form">
+              <div class="field"><input type="text" name="name" placeholder="Your Name" autocomplete="name" required /></div>
+              <div class="field">
+                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" inputmode="tel" pattern="[0-9+ ]{10,15}" required />
+              </div>
+              <div class="field"><input type="text" name="city" placeholder="City" autocomplete="address-level2" /></div>
+              <div class="field">
+                <textarea name="message" rows="3" placeholder="Interested country / university (optional)"></textarea>
+              </div>
+              <button type="submit" class="btn form-btn">Request Callback</button>
+              <div class="form-note">100% free counselling · No hidden charges</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          {stats.map((s) => (
+            <div class="stat-item fade-up">
+              <b>{s.value}</b>
+              <span>{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- WHY MBBS -->
+    <section id="why" class="section">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="section-tag">Why MBBS Abroad</span>
+          <h2 class="section-title">A Smarter Path to Your Medical Career</h2>
+          <div class="divider-line"></div>
+          <p class="section-desc">
+            Vietnam and Georgia have emerged as two of the most preferred destinations for Indian
+            students pursuing quality medical education at an affordable cost.
+          </p>
+        </div>
+        
+        <div class="why-grid">
+          {reasons.map((r, i) => (
+            <div class="why-card fade-up" style={`transition-delay: ${i * 50}ms`}>
+              <div class="why-icon">{r.icon}</div>
+              <h3>{r.title}</h3>
+              <p>{r.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIVERSITIES -->
+    <section class="unis-section" id="universities">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="section-tag">Partner Universities</span>
+          <h2 class="section-title">Our Partner Medical Universities</h2>
+          <div class="divider-line"></div>
+          <p class="section-desc">We work directly with reputed universities in Vietnam and Georgia to secure your MBBS admission.</p>
+        </div>
+
+        {countries.map((c) => (
+          <div class="country-block fade-up">
+            <div class="country-head">
+              <span class="flag">{c.flag}</span>
+              <div>
+                <h3>{c.name}</h3>
+                <p>{c.tagline}</p>
+              </div>
+            </div>
+            <div class="uni-grid">
+              {c.universities.map((u) => (
+                <div class="uni-card">
+                  <div class="uni-logo-box">
+                    <img src={u.logo} alt={`${u.name} logo`} loading="lazy" decoding="async" />
+                  </div>
+                  <h4>{u.name}</h4>
+                  <div class="loc">{u.loc}</div>
+                  <p>{u.desc}</p>
+                  <a class="visit-link" href={u.url} target="_blank" rel="noopener">Visit University Website →</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">Simple 4-Step Admission Process</h2>
+          <div class="divider-line"></div>
+          <p class="section-desc">We make your MBBS abroad journey smooth and stress-free.</p>
+        </div>
+        
+        <div class="steps-grid">
+          {steps.map((s, i) => (
+            <div class="step-card fade-up" style={`transition-delay: ${i * 100}ms`}>
+              <div class="step-number">{i + 1}</div>
+              <h4>{s.title}</h4>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-content fade-up">
+          <h2 class="section-title text-white">Start Your MBBS Journey Today</h2>
+          <div class="divider-line bg-white/30" style="background: rgba(255,255,255,0.3);"></div>
+          <p class="contact-desc">
+            Speak to our expert counsellors in Hyderabad. Limited seats for the 2025–26 intake —
+            call now, WhatsApp us, or request a callback using the enquiry form above.
+          </p>
+          <div class="phone-boxes">
+            <div class="phone-box">
+              <small>Call / WhatsApp</small>
+              <a href="tel:+919502644931">95026 44931</a>
+            </div>
+            <div class="phone-box">
+              <small>Call / WhatsApp</small>
+              <a href="tel:+918186847470">81868 47470</a>
+            </div>
+          </div>
+          <a href="#enquire" class="btn btn-primary" style="margin-top: 24px; display: inline-block;">Fill the Enquiry Form</a>
+        </div>
+        
+        <div class="contact-info-card fade-up fade-up-d2">
+          <h3>Reach Us</h3>
+          <p style="margin-bottom: 24px; color: var(--text-muted, #718096); font-size: 0.875rem;">We're available to answer all your questions about MBBS abroad.</p>
+          <ul class="info-list">
+            <li>
+              <span class="info-icon">📞</span>
+              <div><b>Phone</b><br /><a href="tel:+919502644931">95026 44931</a> · <a href="tel:+918186847470">81868 47470</a></div>
+            </li>
+            <li>
+              <span class="info-icon">💬</span>
+              <div><b>WhatsApp</b><br /><a href="https://wa.me/919502644931" target="_blank" rel="noopener">wa.me/919502644931</a></div>
+            </li>
+            <li>
+              <span class="info-icon">📍</span>
+              <div><b>Office</b><br />Hyderabad, Telangana, India</div>
+            </li>
+            <li>
+              <span class="info-icon">🕘</span>
+              <div><b>Working Hours</b><br />Mon – Sat, 9:30 AM – 6:30 PM</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  /* Common Section Defaults */
+  .section {
+    padding: 80px 0;
+  }
+  .section-tag {
+    display: inline-block;
+    color: var(--crimson, #c8102e);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--font-serif, "Playfair Display", serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--navy, #0d2b55);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .section-title.text-white {
+    color: #fff;
+  }
+  .divider-line {
+    width: 60px;
+    height: 3px;
+    background: var(--crimson, #c8102e);
+    margin-bottom: 24px;
+  }
+  .section-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-desc {
+    color: var(--text-mid, #4a5568);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .mbbs-hero {
+    min-height: auto;
+    background: linear-gradient(150deg, var(--navy, #0d2b55) 0%, #1a3c6d 50%, #0e2040 100%);
+    padding-top: 120px;
+    padding-bottom: 80px;
+    position: relative;
+    color: #fff;
+  }
+  .mbbs-hero .container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,.9);
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    padding: 6px 14px;
+    border-radius: 40px;
+  }
+  .badge-outline {
+    background: transparent;
+    color: var(--gold, #f5e09a);
+    border-color: rgba(245, 224, 154, 0.4);
+  }
+  .hero-title {
+    font-family: var(--font-serif, "Playfair Display", serif);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.18;
+    margin-bottom: 22px;
+  }
+  .hero-title-accent {
+    color: transparent;
+    background: linear-gradient(90deg, #e8c76b, #f5e09a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,.7);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  /* Form Card */
+  .hero-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .enquiry-card {
+    background: var(--white, #fff);
+    border-radius: var(--radius-lg, 16px);
+    padding: 32px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: var(--text-dark, #1a202c);
+  }
+  .enquiry-card h3 {
+    font-family: var(--font-serif, "Playfair Display", serif);
+    font-size: 1.6rem;
+    color: var(--navy, #0d2b55);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .enquiry-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted, #718096);
+    margin-bottom: 24px;
+  }
+  .field {
+    margin-bottom: 16px;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-md, 8px);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    background: #f8fafc;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--crimson, #c8102e);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+  }
+  .form-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .form-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted, #718096);
+    margin-top: 16px;
+  }
+
+  /* STATS */
+  .stats-section {
+    background: var(--navy-light, #153666);
+    padding: 32px 0;
+    color: white;
+    border-bottom: 4px solid var(--crimson, #c8102e);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .stat-item b {
+    display: block;
+    font-size: 2.2rem;
+    font-family: var(--font-serif, "Playfair Display", serif);
+    color: var(--gold, #f5e09a);
+    margin-bottom: 4px;
+  }
+  .stat-item span {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+
+  /* WHY GRID */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    background: #fff;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg, 12px);
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+  .why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.05));
+    border-color: rgba(200,16,46,0.2);
+  }
+  .why-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(200,16,46,0.05);
+    border-radius: var(--radius-md, 8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .why-card h3 {
+    font-family: var(--font-sans, "DM Sans", sans-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy, #0d2b55);
+    margin-bottom: 12px;
+  }
+  .why-card p {
+    font-size: 0.95rem;
+    color: var(--text-mid, #4a5568);
+    line-height: 1.6;
+  }
+
+  /* UNIVERSITIES */
+  .unis-section {
+    background: #f8fafc;
+    padding: 80px 0;
+  }
+  .country-block {
+    margin-bottom: 60px;
+  }
+  .country-block:last-child {
+    margin-bottom: 0;
+  }
+  .country-head {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .country-head .flag {
+    font-size: 2.5rem;
+  }
+  .country-head h3 {
+    font-family: var(--font-serif, "Playfair Display", serif);
+    font-size: 2rem;
+    color: var(--navy, #0d2b55);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .country-head p {
+    color: var(--text-mid, #4a5568);
+    font-size: 1.05rem;
+  }
+  .uni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .uni-card {
+    background: #fff;
+    border-radius: var(--radius-lg, 12px);
+    padding: 32px;
+    box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.04));
+    border: 1px solid var(--border, #e2e8f0);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--crimson, #c8102e);
+  }
+  .uni-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.08));
+  }
+  .uni-logo-box {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+  }
+  .uni-logo-box img {
+    max-height: 60px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .uni-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy, #0d2b55);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .uni-card .loc {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--crimson, #c8102e);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .uni-card p {
+    font-size: 0.95rem;
+    color: var(--text-mid, #4a5568);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 24px;
+  }
+  .visit-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--navy, #0d2b55);
+    transition: color 0.2s;
+  }
+  .visit-link:hover {
+    color: var(--crimson, #c8102e);
+  }
+
+  /* PROCESS */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    counter-reset: step;
+  }
+  .step-card {
+    background: #fff;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg, 12px);
+    padding: 32px 24px;
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .step-card:hover {
+    border-color: var(--crimson, #c8102e);
+    box-shadow: var(--shadow-md, 0 8px 16px rgba(0,0,0,0.06));
+  }
+  .step-number {
+    width: 48px;
+    height: 48px;
+    background: rgba(200,16,46,0.1);
+    color: var(--crimson, #c8102e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+  }
+  .step-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy, #0d2b55);
+    margin-bottom: 12px;
+  }
+  .step-card p {
+    font-size: 0.95rem;
+    color: var(--text-mid, #4a5568);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--navy, #0d2b55);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .contact-content {
+    color: rgba(255,255,255,0.8);
+  }
+  .contact-content h2 {
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .contact-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .phone-boxes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .phone-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md, 8px);
+    padding: 20px 24px;
+    flex: 1;
+    min-width: 200px;
+  }
+  .phone-box small {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gold, #f5e09a);
+    margin-bottom: 8px;
+  }
+  .phone-box a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: var(--font-sans, "DM Sans", sans-serif);
+  }
+  .contact-info-card {
+    background: #fff;
+    border-radius: var(--radius-lg, 16px);
+    padding: 40px;
+  }
+  .contact-info-card h3 {
+    font-family: var(--font-serif, "Playfair Display", serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy, #0d2b55);
+  }
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .info-list li {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border, #e2e8f0);
+  }
+  .info-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .info-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .info-list b {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #718096);
+    margin-bottom: 4px;
+  }
+  .info-list a, .info-list div {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy, #0d2b55);
+  }
+  .info-list a:hover {
+    color: var(--crimson, #c8102e);
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 992px) {
+    .mbbs-hero .container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero-badges {
+      justify-content: center;
+    }
+    .hero-sub {
+      margin-inline: auto;
+    }
+    .hero-actions {
+      justify-content: center;
+    }
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    .phone-boxes {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  // Enquiry form WhatsApp integration
+  document.getElementById('callbackForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const f = new FormData(form);
+    const msg = encodeURIComponent(
+      `Hello, I am ${f.get('name')} from ${f.get('city') || '-'}. ` +
+        'I am interested in MBBS admission abroad (Vietnam/Georgia). ' +
+        (f.get('message') ? `Message: ${f.get('message')}` : 'Please call me back.') +
+        ` My number: ${f.get('phone')}`
+    );
+    window.open(`https://wa.me/919502644931?text=${msg}`, '_blank');
+  });
+
+  // Intersection Observer for fade-up animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-up').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
