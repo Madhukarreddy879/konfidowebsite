@@ -266,49 +266,53 @@ const steps = [
 
     <!-- CONTACT -->
     <section class="contact-section" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-content fade-up">
-          <h2 class="section-title text-white">Start Your MBBS Journey Today</h2>
-          <div class="divider-line bg-white/30" style="background: rgba(255,255,255,0.3);"></div>
-          <p class="contact-desc">
-            Speak to our expert counsellors in Hyderabad. Limited seats for the 2026-2027 intake —
-            call now, WhatsApp us, or request a callback using the enquiry form above.
-          </p>
-          <div class="phone-boxes">
-            <div class="phone-box">
+      <div class="container fade-up">
+        <h2 class="section-title text-white">Start Your MBBS Journey Today</h2>
+        <div class="divider-line" style="background: rgba(255,255,255,0.3);"></div>
+        <p class="contact-desc">
+          Speak to our expert counsellors in Hyderabad. Limited seats for the 2026-2027 intake —
+          call now, WhatsApp us, or fill the enquiry form on this page.
+        </p>
+
+        <div class="contact-details-row">
+          <a href="tel:+917416847470" class="contact-detail-item">
+            <span class="cd-icon">📞</span>
+            <div>
               <small>Call / WhatsApp</small>
-              <a href="tel:+917416847470">74168 47470</a>
+              <strong>74168 47470</strong>
             </div>
-            <div class="phone-box">
+          </a>
+          <a href="tel:+919111122881" class="contact-detail-item">
+            <span class="cd-icon">📞</span>
+            <div>
               <small>Call / WhatsApp</small>
-              <a href="tel:+919111122881">91111 22881</a>
+              <strong>91111 22881</strong>
+            </div>
+          </a>
+          <a href="https://wa.me/917416847470" target="_blank" rel="noopener" class="contact-detail-item">
+            <span class="cd-icon">💬</span>
+            <div>
+              <small>WhatsApp</small>
+              <strong>wa.me/917416847470</strong>
+            </div>
+          </a>
+          <div class="contact-detail-item">
+            <span class="cd-icon">📍</span>
+            <div>
+              <small>Office</small>
+              <strong>Hyderabad, Telangana</strong>
             </div>
           </div>
-          <a href="#enquire" class="btn btn-primary" style="margin-top: 24px; display: inline-block;">Fill the Enquiry Form</a>
+          <div class="contact-detail-item">
+            <span class="cd-icon">🕘</span>
+            <div>
+              <small>Working Hours</small>
+              <strong>Mon – Sat, 9:30 AM – 6:30 PM</strong>
+            </div>
+          </div>
         </div>
-        
-        <div class="contact-info-card fade-up fade-up-d2">
-          <h3>Reach Us</h3>
-          <p style="margin-bottom: 24px; color: var(--text-muted, #718096); font-size: 0.875rem;">We're available to answer all your questions about MBBS abroad.</p>
-          <ul class="info-list">
-            <li>
-              <span class="info-icon">📞</span>
-              <div><b>Phone</b><br /><a href="tel:+917416847470">74168 47470</a> · <a href="tel:+919111122881">91111 22881</a></div>
-            </li>
-            <li>
-              <span class="info-icon">💬</span>
-              <div><b>WhatsApp</b><br /><a href="https://wa.me/917416847470" target="_blank" rel="noopener">wa.me/917416847470</a></div>
-            </li>
-            <li>
-              <span class="info-icon">📍</span>
-              <div><b>Office</b><br />Hyderabad, Telangana, India</div>
-            </li>
-            <li>
-              <span class="info-icon">🕘</span>
-              <div><b>Working Hours</b><br />Mon – Sat, 9:30 AM – 6:30 PM</div>
-            </li>
-          </ul>
-        </div>
+
+        <a href="#enquire" class="btn btn-primary" style="margin-top: 32px; display: inline-block;">Fill the Enquiry Form</a>
       </div>
     </section>
   </main>
@@ -731,98 +735,65 @@ const steps = [
     position: relative;
     overflow: hidden;
   }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 64px;
+  .contact-section .container {
+    max-width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-  }
-  .contact-content {
     color: rgba(255,255,255,0.8);
   }
-  .contact-content h2 {
+  .contact-section h2 {
     color: #fff;
     margin-bottom: 16px;
   }
   .contact-desc {
     font-size: 1.05rem;
     line-height: 1.7;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
-  .phone-boxes {
+  .contact-details-row {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 32px;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
   }
-  .phone-box {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+  .contact-detail-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md, 8px);
-    padding: 20px 24px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    min-width: 250px;
     flex: 1;
-    min-width: 200px;
   }
-  .phone-box small {
+  a.contact-detail-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .cd-icon {
+    font-size: 1.8rem;
+  }
+  .contact-detail-item small {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--gold, #f5e09a);
-    margin-bottom: 8px;
-  }
-  .phone-box a {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    font-family: var(--font-sans, "DM Sans", sans-serif);
-  }
-  .contact-info-card {
-    background: #fff;
-    border-radius: var(--radius-lg, 16px);
-    padding: 40px;
-  }
-  .contact-info-card h3 {
-    font-family: var(--font-serif, "Playfair Display", serif);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--navy, #0d2b55);
-  }
-  .info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .info-list li {
-    display: flex;
-    gap: 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border, #e2e8f0);
-  }
-  .info-list li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-  .info-icon {
-    font-size: 1.5rem;
-    line-height: 1;
-    margin-top: 2px;
-  }
-  .info-list b {
-    display: block;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted, #718096);
     margin-bottom: 4px;
   }
-  .info-list a, .info-list div {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--navy, #0d2b55);
-  }
-  .info-list a:hover {
-    color: var(--crimson, #c8102e);
+  .contact-detail-item strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    font-family: var(--font-sans, "DM Sans", sans-serif);
   }
 
   /* MEDIA QUERIES */
